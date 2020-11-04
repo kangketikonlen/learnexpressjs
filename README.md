@@ -1,6 +1,6 @@
 # express-api
-Express framework api environment setup
-![Alt Text](https://www.mememaker.net/api/bucket?path=static/img/memes/full/2019/Jan/8/3/pennywise-nodejs-212.png)
+Express framework api environment setup\
+![Alt Text](https://miro.medium.com/max/2552/1*lHCKq9Wq91NWxei1Osthdg.png)
 
 ## Requirements
 - NodeJS v12.18.3
@@ -38,5 +38,5 @@ Biar coding terlihat lebih rapi, ikuti guidelines umum referensinya di sini [Goo
 3. [ExpressJS Video](https://www.youtube.com/watch?v=vjf774RKrLc).
 4. [JWT Auth Video](https://www.youtube.com/watch?v=mbsmsi7l3r4).
 
-# Heart Breaker and Life Taker, Thanks for trying. Samper fi~!
+# Every master starts from hello world. Samper fi~!
 ![Alt Text](https://blog.hubspot.com/hubfs/giphy_1-1.gif)
