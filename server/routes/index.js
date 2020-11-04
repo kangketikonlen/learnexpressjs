@@ -1,7 +1,8 @@
 'use strict';
 
 const
-	apiRoute = require('./apis');
+	apiRoute = require('./apis'),
+	homeRoute = require('./home')
 
 function init(server) {
 	server.get('*', function (req, res, next) {
@@ -9,6 +10,7 @@ function init(server) {
 		return next();
 	});
 
+	server.use('/', homeRoute);
 	server.use('/api', apiRoute);
 }
 

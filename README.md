@@ -16,6 +16,12 @@ Express framework api environment setup\
 6. Jalankan aplikasi dengan mengetikan `npm run devs` untuk mode development dan `npm run prods` untuk mode production.
 7. Akses API via browser/curl/insomnia/postman. Enjoy~
 
+## Authentication & Token
+1. Untuk melakukan login, akses http://<ip>:<port>/api/auth dengan `user: admin` dan `pass: admin123` gunakan metode POST.
+2. Jika sukses, maka `accessToken` dan `refreshToken` akan otomatis tergenerate.
+3. Gunakan token tersebut untuk mendapatkan `accessToken` modul melalui request token http://<ip>:<port>/api/token.
+4. Token yang tergenerate dari request token nantinya di gunakan untuk mengkases api lainnya (level, apps, user).
+
 ## Deskripsi Folder
 - ./configs : Tempat untuk menyimpan file konfigurasi database, port dan lainnya.
 	- ./configs/devs : File untuk konfigurasi tahap development.
