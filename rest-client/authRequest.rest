@@ -1,0 +1,16 @@
+#### Request Login
+POST http://localhost:2020/api/auth
+Content-Type: "application/json;"
+
+{
+	"users_login": "admin",
+	"users_pass": "admin123"
+}
+
+#### Request Token
+POST http://localhost:2020/api/auth/token
+Content-Type: application/json
+
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0.zgys5d1FJVQXHVICiwb9PvjzXS63786b4fo-ROVb9rI"
+}

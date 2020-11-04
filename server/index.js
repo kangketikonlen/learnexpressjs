@@ -1,0 +1,66 @@
+'use strict';
+
+const
+	express = require('express'),
+	helmet = require('helmet'),
+	bodyParser = require('body-parser'),
+	google = require('googleapis').google,
+	jwt = require('jsonwebtoken'),
+	cors = require('cors')
+
+module.exports = function () {
+	let server = express(),
+		create,
+		start;
+
+	create = function (config) {
+		let routes = require('./routes');
+
+		// Server settings
+		server.set('env', config.env);
+		server.set('port', config.port);
+		server.set('hostname', config.hostname);
+		server.set('pool', config.dataStore);
+		server.set('oauth2Credentials', config.oauth2Credentials);
+		server.set('JWTsecret', config.JWTsecret);
+		server.set('JWTsecret2', config.JWTsecret2);
+		server.set('trust proxy', 1);
+		server.disable('x-powered-by');
+
+		// Returns middleware
+		server.use(helmet());
+		server.use(cors())
+		server.use(bodyParser.json({
+			limit: '50mb'
+		}));
+		server.use(bodyParser.urlencoded({
+			limit: '50mb',
+			extended: true
+		}));
+
+		// Set up routes
+		routes.init(server);
+	};
+
+	start = function () {
+		let hostname = server.get('hostname'),
+			port = server.get('port');
+
+		global.pool = server.get('pool');
+		global.oauth2Credentials = server.get('oauth2Credentials');
+		global.JWTsecret = server.get('JWTsecret');
+		global.JWTsecret2 = server.get('JWTsecret2');
+		global.OAuth2 = google.auth.OAuth2;
+		global.jwt = jwt;
+		global.google = google;
+
+		server.listen(port, function () {
+			console.log('Express server listening on - http://' + hostname + ':' + port);
+		});
+	};
+
+	return {
+		create: create,
+		start: start
+	};
+};

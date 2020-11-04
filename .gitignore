@@ -1,0 +1,17 @@
+# OSX
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules/
+
+# devs directory
+configs/devs/
+
+# public directory
+public/uploads/images/*.png
+public/uploads/images/*.jpg
+public/uploads/images/*.jpeg

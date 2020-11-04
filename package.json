@@ -1,0 +1,33 @@
+{
+  "name": "express-api",
+  "version": "1.0.0",
+  "description": "Express framework environment setup",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon index.js",
+    "prod": "npx node start index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkasakaRyu/express-api.git"
+  },
+  "author": "Kangketik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkasakaRyu/express-api/issues"
+  },
+  "homepage": "https://github.com/AkasakaRyu/express-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "googleapis": "^61.0.0",
+    "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1"
+  }
+}

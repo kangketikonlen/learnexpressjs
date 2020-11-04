@@ -1,0 +1,33 @@
+#### List
+GET http://localhost:2020/api/levels
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
+
+#### Detail
+GET http://localhost:2020/api/levels/4
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
+
+#### Save
+POST http://localhost:2020/api/levels/
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
+
+{
+	"levels_name": "Level 3",
+	"levels_desc": "Professional Level"
+}
+
+#### Update
+PUT http://localhost:2020/api/levels/4
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
+
+{
+	"levels_name": "Level 2",
+	"levels_desc": "Intermediate Levels"
+}
+
+#### Soft Delete
+PATCH http://localhost:2020/api/levels/4
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
+
+#### Hard Delete
+DELETE http://localhost:2020/api/levels/4
+Authorization: Bearer kangketik eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9ucyI6eyJpZCI6MSwibGV2ZWwiOjEsIm5hbWEiOiJTeXN0ZW0gQWRtaW5pc3RyYXRvciIsImlhdCI6MTYwNDQ4MDgxNX0sImlhdCI6MTYwNDQ4MDgyOCwiZXhwIjoxNjA0NTY3MjI4fQ.Iqc_o73pklqyq8Hkt3Pl6PLQHsykZ_MOUtjViZE_lXw
