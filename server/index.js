@@ -6,7 +6,9 @@ const
 	bodyParser = require('body-parser'),
 	google = require('googleapis').google,
 	jwt = require('jsonwebtoken'),
-	cors = require('cors')
+	cors = require('cors'),
+	morgan = require('morgan'),
+	logConfig = require('../configs/log')
 
 module.exports = function () {
 	let server = express(),
@@ -28,6 +30,7 @@ module.exports = function () {
 		server.disable('x-powered-by');
 
 		// Returns middleware
+		server.use(morgan('[:date[web]] :status - :remote-addr - :method - :url - :response-time ms - :user-agent', { stream: logConfig.stream }))
 		server.use(helmet());
 		server.use(cors())
 		server.use(bodyParser.json({
@@ -55,7 +58,11 @@ module.exports = function () {
 		global.google = google;
 
 		server.listen(port, function () {
-			console.log('Express server listening on - http://' + hostname + ':' + port);
+			try {
+				console.log('Express server listening on - http://' + hostname + ':' + port);
+			} catch (e) {
+				console.log(e);
+			}
 		});
 	};
 
