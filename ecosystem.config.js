@@ -1,5 +1,6 @@
 module.exports = {
   apps: [{
+    name: "Express Environment",
     script: 'index.js',
     watch: '.',
     env: {
@@ -19,7 +20,7 @@ module.exports = {
       user: 'akasakaryu',
       host: '151.106.113.4',
       ref: 'origin/main',
-      repo: 'https://github.com/fathtech/aretha-api',
+      repo: 'git@github.com:kangketikonlen/express-env.git',
       path: '~/',
       'pre-deploy-local': '',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
