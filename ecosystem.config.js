@@ -13,19 +13,5 @@ module.exports = {
     out_file: 'logs/out.log',
     log_file: 'logs/combined.log',
     time: true
-  }],
-
-  deploy: {
-    production: {
-      user: 'akasakaryu',
-      host: '151.106.113.4',
-      port: '14045',
-      ref: 'origin/main',
-      repo: 'git@github.com:kangketikonlen/express-env.git',
-      path: '/home/akasakaryu/Projects/Express-ENV',
-      'pre-deploy-local': '',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
-    }
-  }
+  }]
 };
