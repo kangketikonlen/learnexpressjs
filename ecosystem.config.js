@@ -24,7 +24,7 @@ module.exports = {
       repo: 'git@github.com:kangketikonlen/express-env.git',
       path: '/home/akasakaryu/Projects/Express-ENV',
       'pre-deploy-local': '',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'which pm2',
       'pre-setup': ''
     }
   }
