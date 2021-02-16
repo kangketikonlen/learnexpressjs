@@ -18,7 +18,8 @@ module.exports = {
   deploy: {
     production: {
       user: 'akasakaryu',
-      host: '151.106.113.4:14045',
+      host: '151.106.113.4',
+      port: '14045',
       ref: 'origin/main',
       repo: 'git@github.com:kangketikonlen/express-env.git',
       path: '~/',
