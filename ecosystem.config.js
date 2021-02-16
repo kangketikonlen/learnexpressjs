@@ -22,7 +22,7 @@ module.exports = {
       port: '14045',
       ref: 'origin/main',
       repo: 'git@github.com:kangketikonlen/express-env.git',
-      path: '~/Projects/Express-ENV',
+      path: '/home/akasakaryu/Projects/Express-ENV',
       'pre-deploy-local': '',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
