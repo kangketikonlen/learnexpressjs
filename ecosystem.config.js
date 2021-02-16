@@ -21,6 +21,7 @@ module.exports = {
     production: {
       user: process.env.DEPLOY_USER,
       host: process.env.DEPLOY_HOST,
+      port: process.env.DEPLOY_PORT,
       key: '~/.ssh/deploy.key',
       ref: 'origin/main',
       repo: 'git@github.com:kangketikonlen/express-env.git',
