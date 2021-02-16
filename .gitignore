@@ -1,9 +1,8 @@
 # OSX
 .DS_Store
 
-# Logs
-logs
-*.log
+# Logs directory
+logs/*.log
 
 # Dependency directory
 node_modules/
