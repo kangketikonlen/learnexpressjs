@@ -1,7 +1,7 @@
 name: CI - Master
 on:
   push:
-    branches: [ main ]
+    branches: [ publish ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
