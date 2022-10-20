@@ -1,13 +1,13 @@
-name: CI - Master
+name: 🖥 Deploy to server
 on:
   push:
-    branches: [ main ]
+    branches: [ publish ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up SSH
+      - name: 🔑 Set up SSH Cardentials
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy.key
@@ -19,15 +19,15 @@ jobs:
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
 
       # (optional - only needed if your config uses environment variables)
-      - name: Create env file
+      - name: 📝 Create env file
         run: |
           touch .env
           echo DEPLOY_USER=${{ secrets.DEPLOY_USER }} >> .env
           echo DEPLOY_HOST=${{ secrets.DEPLOY_HOST }} >> .env
           echo DEPLOY_PORT=${{ secrets.DEPLOY_PORT }} >> .env
 
-      - name: Install PM2
+      - name: 📦 Install PM2
         run: npm i pm2
 
-      - name: Deploy
+      - name: 🔥 Deploy
         run: pm2 deploy ecosystem.config.js production
