@@ -54,7 +54,7 @@ exports.tokenRequest = async (req, res) => {
 		if (err) return res.status(403).send({ status: "error", pesan: "Terjadi kesalahan di sisi server!" });
 		// Return accessToken.
 		const accessToken = generateAccessToken({ sessions })
-		res.json({ accessToken: accessToken })
+		res.json({ accessToken: accessToken, session: sessions })
 	})
 }
 

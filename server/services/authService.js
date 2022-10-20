@@ -13,4 +13,15 @@ services.findUser = (users_login) => {
 	})
 };
 
+services.findSession = (user_id) => {
+	return new Promise((resolve, reject) => {
+		pool.query(`SELECT * FROM sessions WHERE user_id = ?`, [user_id], (err, results) => {
+			if (err) {
+				return reject(err);
+			}
+			return resolve(results);
+		})
+	})
+};
+
 module.exports = services;
