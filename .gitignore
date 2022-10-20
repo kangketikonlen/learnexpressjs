@@ -1,13 +1,6 @@
 # OSX
 .DS_Store
 
-# Logs
-err.log
-out.log
-combined.log
-logs/*.log
-logs/.*-audit.json
-
 # Dependency directory
 node_modules/
 
