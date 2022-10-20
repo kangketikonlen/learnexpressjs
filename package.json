@@ -1,5 +1,5 @@
 {
-  "name": "express-api",
+  "name": "learnexpressjs",
   "version": "1.0.0",
   "description": "Express framework environment setup",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AkasakaRyu/express-api.git"
+    "url": "git+https://github.com/kangketikonlen/learnexpressjs.git"
   },
-  "author": "Kangketik",
+  "author": "kangketikonlen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AkasakaRyu/express-api/issues"
+    "url": "https://github.com/kangketikonlen/learnexpressjs/issues"
   },
-  "homepage": "https://github.com/AkasakaRyu/express-api#readme",
+  "homepage": "https://github.com/kangketikonlen/learnexpressjs#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -33,5 +33,8 @@
     "node-uuid": "^1.4.8",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
