@@ -6,7 +6,7 @@ const connDb = mysql.createPool({
 	port: "3306",
 	user: "root",
 	password: "older45.,",
-	database: "samples_express"
+	database: "sample-expressjs"
 });
 
 module.exports = { connDb: connDb }
