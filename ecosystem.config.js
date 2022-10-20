@@ -24,8 +24,8 @@ module.exports = {
       port: process.env.DEPLOY_PORT,
       key: '~/.ssh/deploy.key',
       ref: 'origin/main',
-      repo: 'git@github.com:kangketikonlen/express-env.git',
-      path: '/home/akasakaryu/Projects/Express-ENV',
+      repo: 'git@github.com:kangketikonlen/learnexpressjs.git',
+      path: '/home/akasakaryu/Projects/learnexpressjs',
       'pre-deploy-local': '',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
