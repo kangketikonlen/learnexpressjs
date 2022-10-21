@@ -1,27 +1,78 @@
 'use strict';
 
+const sessionModel = require("../models/session.model");
+const userModel = require("../models/user.model");
+
 let services = {};
 
-services.findUser = (users_login) => {
+services.getAllSessions = () => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM users WHERE users_login = ?`, [users_login], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		sessionModel.find().then(data => {
+			return resolve(data);
+		}).catch(err => {
+			return reject(err);
+		})
+	})
+}
+
+services.findUser = (username) => {
+	return new Promise((resolve, reject) => {
+		userModel.findOne({ username: username }).then(data => {
+			return resolve(data);
+		}).catch(err => {
+			return reject(err);
 		})
 	})
 };
 
-services.findSession = (user_id) => {
+services.findByName = (username) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM sessions WHERE user_id = ?`, [user_id], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		userModel.findOne({ username: username }).then(data => {
+			return resolve(data);
+		}).catch(err => {
+			return reject(err);
 		})
 	})
 };
+
+services.findSession = (username) => {
+	return new Promise((resolve, reject) => {
+		sessionModel.findOne({ username: username }).then(data => {
+			return resolve(data);
+		}).catch(err => {
+			return reject(err);
+		})
+	})
+};
+
+services.saveData = (data) => {
+	return new Promise((resolve, reject) => {
+		userModel.create(data).then(results => {
+			return resolve(results);
+		}).catch(err => {
+			return reject(err);
+		});
+	})
+};
+
+services.saveSession = (data) => {
+	return new Promise((resolve, reject) => {
+		sessionModel.create(data).then(results => {
+			return resolve(results);
+		}).catch(err => {
+			return reject(err);
+		});
+	})
+};
+
+services.removeSession = (token) => {
+	return new Promise((resolve, reject) => {
+		sessionModel.findOneAndRemove({ refreshToken: token }).then(results => {
+			return resolve(results);
+		}).catch(err => {
+			return reject(err);
+		});
+	});
+}
 
 module.exports = services;

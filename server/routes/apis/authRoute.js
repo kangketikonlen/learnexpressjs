@@ -5,6 +5,7 @@ const
 let router = express.Router();
 
 router.post('/', controller.loginRequest);
+router.post('/register', controller.registerRequest);
 router.post('/token', controller.tokenRequest);
 router.delete('/logout', controller.logoutRequest);
 
