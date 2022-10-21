@@ -1,48 +1,65 @@
 'use strict';
 
+const appModel = require("../models/app.model");
+
 let services = {};
 
 services.all = () => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM apps WHERE deleted != 1`, (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		appModel.find().then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-services.one = (id) => {
+services.one = (name) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM apps WHERE apps_id = ?`, [id], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		appModel.findOne({ name: name }).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-
-services.findByName = (apps_short_desc) => {
+services.findByID = (id) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM apps WHERE apps_short_desc = ?`, [apps_short_desc], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		appModel.findById(id).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-services.update = (id, appsData) => {
+services.create = (data) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`UPDATE apps SET ? WHERE apps_id = ?`, [appsData, id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil terupdate!" });
+		appModel.create(data).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
+		})
+	})
+}
+
+services.update = (id, data) => {
+	return new Promise((resolve, reject) => {
+		appModel.findByIdAndUpdate(id, data).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
+		})
+	})
+}
+
+services.delete = (id) => {
+	return new Promise((resolve, reject) => {
+		appModel.findByIdAndDelete(id).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 }

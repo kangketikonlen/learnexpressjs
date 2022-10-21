@@ -6,33 +6,38 @@ const
 	controller = require("../../controllers/appsController")
 
 const diskStorage = multer.diskStorage({
-	destination: function (req, file, cb) {
+	destination: function (_, _, cb) {
 		cb(null, path.join(__dirname, "../../../public/uploads/images"));
 	},
-	filename: function (req, file, cb) {
-		cb(
-			null,
-			crypto.createHash('md5').update(file.fieldname).digest('hex') + path.extname(file.originalname)
-		);
+	filename: function (_, file, cb) {
+		cb(null, crypto.createHash('md5').update(file.originalname).digest('hex') + path.extname(file.originalname));
 	}
 })
 
 let router = express.Router();
 
 router.get('/', authToken, controller.getAll);
-router.put('/:id', authToken, controller.update);
-router.post('/upload/:id', authToken, multer({ storage: diskStorage }).single("logo"), controller.upload);
+router.get('/:id', authToken, controller.getOne);
+router.post('/', authToken, multer({ storage: diskStorage }).array("files", 2), controller.create);
+router.put('/:id', authToken, multer({ storage: diskStorage }).array("files", 2), controller.update);
+router.delete('/:id', authToken, controller.delete);
 
 function authToken(req, res, next) {
+	// Set token from header.
 	const token = req.headers['authorization'];
-	if (!token) return res.status(401).send({ auth: false, message: 'Token 含めてください! UwU.' });
-	jwt.verify(token.replace(/Bearer /g, "").replace(/kangketik /g, ""), JWTsecret, function (err, decode) {
-		if (err) return res.status(500).send({ auth: false, message: 'Token 認証に失敗しました OwO' });
-		req.decode = decode["sessions"];
-		if (req.decode.level == 1) {
+	// Check if token exists.
+	if (!token) return res.status(401).send({ status: "error", pesan: 'Token tidak ditemukan.' });
+	// Verify token with JWTsecret.
+	jwt.verify(token.replace(/Bearer /g, ""), JWTsecret, function (err, decode) {
+		// Return error if expired or malfunction.
+		if (err) return res.status(500).send({ status: "error", message: err.message });
+		// Add session to requests.
+		req.decode = decode;
+		// Check if level eligible to access.
+		if (decode.level.toLowerCase() == "admin") {
 			next();
 		} else {
-			res.status(401).json({ status: "error", pesan: "Anda tidak berhak untuk mengakses modul ini." })
+			res.status(403).json({ status: "error", pesan: "Anda tidak berhak mengakses modul." })
 		}
 	})
 }
