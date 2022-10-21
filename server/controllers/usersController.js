@@ -61,7 +61,7 @@ exports.delete = async (req, res) => {
 	try {
 		// Cek data dari database apakah exists.
 		let data = await services.one(req.params.username);
-		if (!data.length) return res.status(404).send({ status: "error", pesan: "Data tidak ditemukan!", sessions: req.decode });
+		if (!data) return res.status(404).send({ status: "error", pesan: "Data tidak ditemukan!", sessions: req.decode });
 		// Proses delete data.
 		let results = await services.delete(req.params.username);
 		if (results) return res.status(200).send({ status: "success", pesan: "Data berhasil dihapus!", sessions: req.decode });
