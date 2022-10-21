@@ -16,7 +16,7 @@ services.all = () => {
 
 services.one = (username) => {
 	return new Promise((resolve, reject) => {
-		userModel.find({ username: username }).then(results => {
+		userModel.findOne({ username: username }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);
