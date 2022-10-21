@@ -1,80 +1,65 @@
 'use strict';
 
+const levelModel = require("../models/level.model");
+
 let services = {};
 
 services.all = () => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM levels WHERE deleted != 1`, (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		levelModel.find().then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-services.one = (id) => {
+services.one = (name) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM levels WHERE levels_id = ?`, [id], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		levelModel.findOne({ name: name }).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-services.findByName = (levels_name) => {
+services.findByID = (id) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM levels WHERE levels_name = ?`, [levels_name], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
+		levelModel.findById(id).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 };
 
-services.save = (levelsData) => {
+services.create = (data) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`INSERT INTO levels SET ?`, [levelsData], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil tersimpan!" });
+		levelModel.create(data).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 }
 
-services.update = (id, levelsData) => {
+services.update = (id, data) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`UPDATE levels SET ? WHERE levels_id = ?`, [levelsData, id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil terupdate!" });
+		levelModel.findByIdAndUpdate(id, data).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 }
 
-services.softDel = (id) => {
+services.delete = (id) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`UPDATE levels SET deleted = 1 WHERE levels_id = ?`, [id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil terhapus!" });
-		})
-	})
-}
-
-services.hardDel = (id) => {
-	return new Promise((resolve, reject) => {
-		pool.query(`DELETE FROM levels WHERE levels_id = ?`, [id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data terhapus secara permanen!" });
+		levelModel.findByIdAndDelete(id).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
 		})
 	})
 }
