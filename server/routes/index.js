@@ -1,16 +1,13 @@
 'use strict';
 
-const
-	apiRoute = require('./apis'),
-	homeRoute = require('./home')
+const apiRoute = require('./apis');
 
 function init(server) {
-	server.get('*', function (req, res, next) {
-		console.log('Request was made to: ' + req.originalUrl);
+	server.get('*', function (req, _, next) {
+		console.log(`${req.method} request was made to: ${req.originalUrl}`);
 		return next();
 	});
 
-	server.use('/', homeRoute);
 	server.use('/api', apiRoute);
 }
 
