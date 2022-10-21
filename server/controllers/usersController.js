@@ -1,100 +1,74 @@
 'use strict';
 
-const
-	bcrypt = require('bcrypt'),
-	salt = bcrypt.genSaltSync(10),
-	services = require('../services/usersService');
+const services = require('../services/usersService');
 
-exports.getAll = async (req, res, next) => {
+exports.getAll = async (req, res) => {
 	try {
 		let results = await services.all();
 		res.json({ data: results, sessions: req.decode });
 	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
+		res.status(500).send({ status: "error", pesan: `${e}` });
 	}
 }
 
-exports.getOne = async (req, res, next) => {
+exports.getOne = async (req, res) => {
 	try {
-		let results = await services.one(req.params.id);
+		let results = await services.one(req.params.username);
 		if (results.length > 0) {
 			res.json({ data: results, sessions: req.decode });
 		} else {
-			res.status(404).json({ status: "Not Found!", pesan: "Data tidak ditemukan!" })
+			res.status(404).json({ status: "error", pesan: "Data tidak ditemukan!" })
 		}
 	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
+		res.status(500).send({ status: "error", pesan: `${e}` });
 	}
 }
 
-exports.create = async (req, res, next) => {
+exports.create = async (req, res) => {
 	try {
-		if (req.body.users_pass != "") {
-			body: Object.assign(req.body, {
-				users_pass: bcrypt.hashSync(req.body.users_pass, salt)
-			})
-		}
-		let user_exists = await services.findByName(req.body.users_login);
-		if (user_exists.length > 0) {
-			res.status(500).json({ status: "error", pesan: "Username sudah terpakai!" })
-		} else {
-			let results = await services.save(req.body);
-			res.json({ data: results, sessions: req.decode });
-		}
+		// Mencari data dari database.
+		let userExists = await services.one(req.body.username);
+		// Cek data dari database apakah exists.
+		if (userExists.length > 0) return res.status(403).send({ status: "error", pesan: "Username sudah digunakan!", sessions: req.decode });
+		// Proses save data.
+		let results = await services.save(req.body);
+		// return success if save success.
+		if (results) return res.status(201).send({ status: "success", pesan: "Register berhasil!", sessions: req.decode });
 	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
+		res.status(500).send({ status: "error", pesan: `${e}` });
 	}
 }
 
-exports.update = async (req, res, next) => {
+exports.update = async (req, res) => {
 	try {
-		if (req.body.users_pass != "") {
-			body: Object.assign(req.body, {
-				users_pass: bcrypt.hashSync(req.body.users_pass, salt)
-			})
+		// Cek data dari database apakah exists.
+		let data = await services.one(req.params.username);
+		if (!data.length) return res.status(404).send({ status: "error", pesan: "Data tidak ditemukan!", sessions: req.decode });
+		// Periksa apakah session sama dengan username
+		if (req.body.username != req.decode.username) {
+			// Mencari data dari database.
+			let userExists = await services.one(req.body.username);
+			// Cek data dari database apakah exists.
+			if (userExists.length > 0) return res.status(403).send({ status: "error", pesan: "Username sudah digunakan!", sessions: req.decode });
 		}
-		let user_exists = await services.findByName(req.body.users_login);
-		if (user_exists.length > 0) {
-			res.status(500).json({ status: "error", pesan: "Username sudah terpakai!" })
-		} else {
-			let findByID = await services.one(req.params.id);
-			if (findByID.length > 0) {
-				let results = await services.update(req.params.id, req.body);
-				res.json({ data: results, sessions: req.decode });
-			} else {
-				res.status(404).json({ status: "Not Found!", pesan: "Data tidak ditemukan!" })
-			}
-		}
+		// Proses update data.
+		let results = await services.update(req.params.username, req.body);
+		// return success if save success.
+		if (results) return res.status(200).send({ status: "success", pesan: "Update berhasil!", sessions: req.decode });
 	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
+		res.status(500).send({ status: "error", pesan: `${e}` });
 	}
 }
 
-exports.softDel = async (req, res, next) => {
+exports.delete = async (req, res) => {
 	try {
-		let results = await services.softDel(req.params.id);
-		res.json({ data: results, sessions: req.decode });
+		// Cek data dari database apakah exists.
+		let data = await services.one(req.params.username);
+		if (!data.length) return res.status(404).send({ status: "error", pesan: "Data tidak ditemukan!", sessions: req.decode });
+		// Proses delete data.
+		let results = await services.delete(req.params.username);
+		if (results) return res.status(200).send({ status: "success", pesan: "Data berhasil dihapus!", sessions: req.decode });
 	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
-	}
-}
-
-exports.hardDel = async (req, res, next) => {
-	try {
-		let findByID = await services.one(req.params.id);
-		if (findByID.length > 0) {
-			let results = await services.hardDel(req.params.id);
-			res.json({ data: results, sessions: req.decode });
-		} else {
-			res.status(404).json({ status: "Not Found!", pesan: "Data tidak ditemukan!" })
-		}
-	} catch (e) {
-		console.log(e);
-		res.status(500).json({ status: "error", pesan: "Terjadi kesalahan pada server!" });
+		res.status(500).send({ status: "error", pesan: `${e}` });
 	}
 }

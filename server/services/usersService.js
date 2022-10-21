@@ -1,84 +1,55 @@
 'use strict';
 
-const
-	bcrypt = require('bcrypt'),
-	salt = bcrypt.genSaltSync(10);
+const userModel = require('../models/user.model');
 
 let services = {};
 
 services.all = () => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM users WHERE deleted != 1`, (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
-		})
+		userModel.find().then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
+		});
 	})
 };
 
-services.one = (id) => {
+services.one = (username) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM users WHERE users_id = ?`, [id], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve(results);
-		})
+		userModel.find({ username: username }).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
+		});
 	})
 };
 
-services.findByName = (users_login) => {
+services.save = (data) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`SELECT * FROM users WHERE users_login = ?`, [users_login], (err, results) => {
-			if (err) {
-				return reject(err);
-			}
+		userModel.create(data).then(results => {
 			return resolve(results);
-		})
+		}).catch(err => {
+			return reject(err);
+		});
 	})
-};
+}
 
-services.save = (usersData) => {
+services.update = (username, data) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`INSERT INTO users SET ?`, [usersData], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil tersimpan!" });
+		userModel.findOneAndUpdate({ username: username }, data).then(results => {
+			return resolve(results);
+		}).catch(err => {
+			return reject(err);
 		})
 	})
 }
 
-services.update = (id, usersData) => {
+services.delete = (username) => {
 	return new Promise((resolve, reject) => {
-		pool.query(`UPDATE users SET ? WHERE users_id = ?`, [usersData, id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil terupdate!" });
-		})
-	})
-}
-
-services.softDel = (id) => {
-	return new Promise((resolve, reject) => {
-		pool.query(`UPDATE users SET deleted = 1 WHERE users_id = ?`, [id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data berhasil terhapus!" });
-		})
-	})
-}
-
-services.hardDel = (id) => {
-	return new Promise((resolve, reject) => {
-		pool.query(`DELETE FROM users WHERE users_id = ?`, [id], (err) => {
-			if (err) {
-				return reject(err);
-			}
-			return resolve({ status: "Berhasil", pesan: "Data terhapus secara permanen!" });
+		userModel.findOneAndDelete({ username: username }).then(results => {
+			return resolve(results);
+		}).catch(err => {
+			return reject(err);
 		})
 	})
 }

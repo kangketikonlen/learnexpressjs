@@ -5,22 +5,27 @@ const
 let router = express.Router();
 
 router.get('/', authToken, controller.getAll);
-router.get('/:id', authToken, controller.getOne);
+router.get('/:username', authToken, controller.getOne);
 router.post('/', authToken, controller.create);
-router.put('/:id', authToken, controller.update);
-router.patch('/:id', authToken, controller.softDel);
-router.delete('/:id', authToken, controller.hardDel);
+router.put('/:username', authToken, controller.update);
+router.delete('/:username', authToken, controller.delete);
 
 function authToken(req, res, next) {
+	// Set token from header.
 	const token = req.headers['authorization'];
-	if (!token) return res.status(401).send({ auth: false, message: 'Token 含めてください! UwU.' });
-	jwt.verify(token.replace(/Bearer /g, "").replace(/kangketik /g, ""), JWTsecret, function (err, decode) {
-		if (err) return res.status(500).send({ auth: false, message: 'Token 認証に失敗しました OwO.' });
-		req.decode = decode["sessions"];
-		if (req.decode.level == 1) {
+	// Check if token exists.
+	if (!token) return res.status(401).send({ status: "error", pesan: 'Token tidak ditemukan.' });
+	// Verify token with JWTsecret.
+	jwt.verify(token.replace(/Bearer /g, ""), JWTsecret, function (err, decode) {
+		// Return error if expired or malfunction.
+		if (err) return res.status(500).send({ status: "error", message: err.message });
+		// Add session to requests.
+		req.decode = decode;
+		// Check if level eligible to access.
+		if (decode.level.toLowerCase() == "admin") {
 			next();
 		} else {
-			res.status(401).json({ status: "error", pesan: "Anda tidak berhak untuk mengakses modul ini." })
+			res.status(403).json({ status: "error", pesan: "Anda tidak berhak mengakses modul." })
 		}
 	})
 }
