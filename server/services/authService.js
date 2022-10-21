@@ -5,7 +5,7 @@ const userModel = require("../models/user.model");
 
 let services = {};
 
-services.getAllSessions = () => {
+services.all = () => {
 	return new Promise((resolve, reject) => {
 		sessionModel.find().then(data => {
 			return resolve(data);
@@ -15,27 +15,7 @@ services.getAllSessions = () => {
 	})
 }
 
-services.findUser = (username) => {
-	return new Promise((resolve, reject) => {
-		userModel.findOne({ username: username }).then(data => {
-			return resolve(data);
-		}).catch(err => {
-			return reject(err);
-		})
-	})
-};
-
-services.findByName = (username) => {
-	return new Promise((resolve, reject) => {
-		userModel.findOne({ username: username }).then(data => {
-			return resolve(data);
-		}).catch(err => {
-			return reject(err);
-		})
-	})
-};
-
-services.findSession = (username) => {
+services.one = (username) => {
 	return new Promise((resolve, reject) => {
 		sessionModel.findOne({ username: username }).then(data => {
 			return resolve(data);
@@ -45,17 +25,7 @@ services.findSession = (username) => {
 	})
 };
 
-services.saveData = (data) => {
-	return new Promise((resolve, reject) => {
-		userModel.create(data).then(results => {
-			return resolve(results);
-		}).catch(err => {
-			return reject(err);
-		});
-	})
-};
-
-services.saveSession = (data) => {
+services.create = (data) => {
 	return new Promise((resolve, reject) => {
 		sessionModel.create(data).then(results => {
 			return resolve(results);
@@ -65,7 +35,7 @@ services.saveSession = (data) => {
 	})
 };
 
-services.removeSession = (token) => {
+services.delete = (token) => {
 	return new Promise((resolve, reject) => {
 		sessionModel.findOneAndRemove({ refreshToken: token }).then(results => {
 			return resolve(results);
