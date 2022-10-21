@@ -1,6 +1,6 @@
 'use strict';
 
-const services = require('../services/usersService');
+const services = require('../services/user.service');
 
 exports.getAll = async (req, res) => {
 	try {

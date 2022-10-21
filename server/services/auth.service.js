@@ -1,7 +1,6 @@
 'use strict';
 
 const sessionModel = require("../models/session.model");
-const userModel = require("../models/user.model");
 
 let services = {};
 

@@ -1,14 +1,26 @@
 const
 	express = require('express'),
-	controller = require('../../controllers/usersController');
+	multer = require('multer'),
+	path = require('path'),
+	crypto = require('crypto'),
+	controller = require("../../controllers/app.controller")
+
+const diskStorage = multer.diskStorage({
+	destination: function (_, _, cb) {
+		cb(null, path.join(__dirname, "../../../public/uploads/images"));
+	},
+	filename: function (_, file, cb) {
+		cb(null, crypto.createHash('md5').update(file.originalname).digest('hex') + path.extname(file.originalname));
+	}
+})
 
 let router = express.Router();
 
 router.get('/', authToken, controller.getAll);
-router.get('/:username', authToken, controller.getOne);
-router.post('/', authToken, controller.create);
-router.put('/:username', authToken, controller.update);
-router.delete('/:username', authToken, controller.delete);
+router.get('/:id', authToken, controller.getOne);
+router.post('/', authToken, multer({ storage: diskStorage }).array("files", 2), controller.create);
+router.put('/:id', authToken, multer({ storage: diskStorage }).array("files", 2), controller.update);
+router.delete('/:id', authToken, controller.delete);
 
 function authToken(req, res, next) {
 	// Set token from header.

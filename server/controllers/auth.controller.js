@@ -1,8 +1,8 @@
 'use strict';
 
 const bcrypt = require('bcrypt'),
-	usrSrv = require('../services/usersService'),
-	services = require('../services/authService');
+	services = require('../services/auth.service'),
+	userService = require('../services/user.service');
 
 let refreshTokens = [];
 
@@ -11,7 +11,7 @@ exports.loginRequest = async (req, res) => {
 		// Call populate refresh token functions.
 		await populateRefreshToken();
 		// Cek data dari database apakah exists.
-		let userData = await usrSrv.one(req.body.username);
+		let userData = await userService.one(req.body.username);
 		if (!userData) return res.status(401).send({ status: "error", pesan: "Username atau password salah!" });
 		// Mencocokan plain text password dari request dengan password yang terenkripsi dari database.
 		const passwordIsValid = bcrypt.compareSync(req.body.password, userData.password);
@@ -28,11 +28,11 @@ exports.loginRequest = async (req, res) => {
 exports.registerRequest = async (req, res) => {
 	try {
 		// Mencari data dari database.
-		let userExists = await usrSrv.one(req.body.username);
+		let userExists = await userService.one(req.body.username);
 		// Cek data dari database apakah exists.
 		if (userExists) return res.status(403).send({ status: "error", pesan: "Username sudah digunakan!" });
 		// Proses save data.
-		let results = await usrSrv.save(req.body);
+		let results = await userService.save(req.body);
 		// return success if save success.
 		if (results) return res.status(201).send({ status: "success", pesan: "Register berhasil!" });
 	} catch (e) {

@@ -5,7 +5,6 @@ const
 	mongoose = require('mongoose'),
 	helmet = require('helmet'),
 	bodyParser = require('body-parser'),
-	google = require('googleapis').google,
 	jwt = require('jsonwebtoken'),
 	cors = require('cors'),
 	morgan = require('morgan'),
@@ -24,7 +23,6 @@ module.exports = function () {
 		server.set('port', config.port);
 		server.set('dbURI', config.dbURI);
 		server.set('hostname', config.hostname);
-		server.set('oauth2Credentials', config.oauth2Credentials);
 		server.set('JWTsecret', config.JWTsecret);
 		server.set('JWTsecret2', config.JWTsecret2);
 		server.set('trust proxy', 1);
@@ -48,22 +46,20 @@ module.exports = function () {
 
 	start = function () {
 		let hostname = server.get('hostname'),
-			port = server.get('port');
+			port = server.get('port'),
+			dbUri = server.get('dbURI');
 
-		global.oauth2Credentials = server.get('oauth2Credentials');
 		global.JWTsecret = server.get('JWTsecret');
 		global.JWTsecret2 = server.get('JWTsecret2');
-		global.OAuth2 = google.auth.OAuth2;
 		global.jwt = jwt;
-		global.google = google;
 
-		mongoose.connect(server.get('dbURI'), {
+		mongoose.connect(dbUri, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true
 		}).then(() => {
 			console.log("Connected to the database!");
 		}).catch(err => {
-			console.log("Cannot connect to the database!", err);
+			console.log(`Cannot connect to the database! ${err}`);
 			process.exit();
 		});
 

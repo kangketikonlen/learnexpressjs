@@ -1,6 +1,6 @@
 const
 	express = require('express'),
-	controller = require("../../controllers/levelsController");
+	controller = require("../../controllers/level.controller");
 
 let router = express.Router();
 
