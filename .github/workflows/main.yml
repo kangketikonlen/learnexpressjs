@@ -6,7 +6,7 @@ on:
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
 
-name: 🔖 Create System Tags
+name: 🔖 Create Major System Tags
 jobs:
   build:
     name: 🔖 Bump tag
