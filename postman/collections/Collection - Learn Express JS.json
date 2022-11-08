@@ -1,0 +1,2913 @@
+{
+	"info": {
+		"_postman_id": "a3385e28-9800-403b-bd84-2d3144d9f4de",
+		"name": "Collection - Learn Express JS",
+		"description": "API Endpoint for Learn Express JS backend apps.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "6505881-a3385e28-9800-403b-bd84-2d3144d9f4de"
+	},
+	"item": [
+		{
+			"name": "Request Auth",
+			"item": [
+				{
+					"name": "Register Administrator",
+					"id": "594526bd-b231-4abd-be61-e3f975938d06",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Administrator\",\n    \"level\": \"admin\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "A request for creating a new administrator user. You can skip or block this endpoint for security reasons."
+					},
+					"response": [
+						{
+							"id": "ef11ea84-eb15-4d14-899e-24ebfb4de968",
+							"name": "Register Administrator",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Administrator\",\n    \"level\": \"admin\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-neLAorBDWiongt6B36xaie3DHtI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:14:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Register berhasil!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Authentication Login",
+					"id": "7ad54ddb-b29e-44fe-831a-f7e3f9d87dc0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "This request will return an access_token and refresh_token. Save both token on client side and use it for authorization,"
+					},
+					"response": [
+						{
+							"id": "1a9d4f7f-1f2b-4939-9a47-26c53c49de7f",
+							"name": "Authentication Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e3-LP+oDkRuebVRBWX4L0vIyUvD158\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:15:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Anda berhasil login!\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hIjoiQWRtaW5pc3RyYXRvciIsImxldmVsIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3OTM0OTE5LCJleHAiOjE2Njc5Mzg1MTl9.MCDkY0Y3v6I9iwLNUOE8DMxm3z-YZUSw-XBJYxfzpk4\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hIjoiQWRtaW5pc3RyYXRvciIsImxldmVsIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3OTM0OTE5fQ.Pspd3gs8ReXTra-XAqkjjnbSBJXE0D_BASnUVGqV21A\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Authentication Logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c67c78bb-ee2b-4691-b96a-c43ecced6fdf",
+								"exec": [
+									"const tokenUrl = pm.variables.get('baseUrl')+\"/auth\"",
+									"",
+									"const getTokenRequest = {",
+									"  method: 'POST',",
+									"  url: tokenUrl,",
+									"  header: {",
+									"      'content-type': 'application/json'",
+									"  },",
+									"  body: {",
+									"      mode: 'raw',",
+									"      raw: JSON.stringify({",
+									"          \"username\": \"admin\",",
+									"          \"password\": \"admin123\"",
+									"      })",
+									"  }",
+									"};",
+									"",
+									"pm.sendRequest(getTokenRequest, (err, response) => {",
+									"  const jsonResponse = response.json();",
+									"  const newRefreshToken = jsonResponse.data.refreshToken;",
+									"",
+									"  pm.variables.set('refresh_token', newRefreshToken);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "0e0e213f-f42c-4bd1-9b3f-a75aea0c330f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "This request will delete session or token."
+					},
+					"response": [
+						{
+							"id": "f586fdf2-8f88-44e2-883d-268ada84f4bb",
+							"name": "Authentication Logout",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"{{refresh_token}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-6ryZ4f8sjG2UhWlhovJqvn3za2Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:15:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Anda berhasil logout!\"\n}"
+						}
+					]
+				}
+			],
+			"id": "27ae8fe5-edb6-4e86-b86c-7c96ed4d9352",
+			"description": "A group of request for creating and modifying sessions.",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7bb48e20-3f19-41e9-91e7-3427eed52d33",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e253b59-d30e-4f53-9cc6-8040b190e648",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Request Level",
+			"item": [
+				{
+					"name": "Level - Create Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c58feb29-9ff4-4c9c-92fc-6c60fa28413f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "64bd8943-74d4-4fe0-b1ac-df60b6163d89",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Staff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels"
+							]
+						},
+						"description": "A private request for create a level. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "cb6e7161-3d5e-4984-b777-ca52938dc94f",
+							"name": "Level - Create Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Staff\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/levels",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"levels"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-LStE7E48ZInckTbNLwNVtghPZyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:15:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil disimpan!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Level - Get All Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0098570f-a158-4e57-aba2-02076f88984f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "b80c1267-4d0a-4964-832c-0998eb92b0b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels"
+							]
+						},
+						"description": "This request will return all of your level data. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "763dd0ae-ea7a-49b8-b553-7af2703b815b",
+							"name": "Level - Get All Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/levels",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"levels"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-AfELM1XYcQhc8h9FG/jeUqRaIQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:16:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aaae98177a14e58be54ab\",\n            \"name\": \"Staff\",\n            \"createdAt\": \"11/9/2022, 2:15:53 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Level - Get Single Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0e3f0aee-f8fd-4742-a0ac-9d22e5837f42",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "31b330d3-9b57-449a-b660-a967b5182fa6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/levels/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "636aae3d8177a14e58be54fe"
+								}
+							]
+						},
+						"description": "This request will return a single data of your level based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "451405ca-b65c-4cea-b5d9-6b4d0eab6dd4",
+							"name": "Level - Get Single Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/levels/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"levels",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d8-RV3ZBFPMIBVtw9h9vz5g2iERv1g\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:16:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"636aaae98177a14e58be54ab\",\n        \"name\": \"Staff\",\n        \"createdAt\": \"11/9/2022, 2:15:53 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Level - Update Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0a7e6c85-209d-4fc4-9a93-bc784bb576e3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "1a391f6f-31e0-4c62-91bf-32a2a0130944",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Staff Modified\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/levels/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will update a single data of your level based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "7b176938-fad4-44ee-8f9e-a7df584e8532",
+							"name": "Level - Update Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Staff Modified\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/levels/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"levels",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:16:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil diupdate!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Level - Delete Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fec58c83-d1be-4734-a524-cdcad6336d23",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "910f2d65-8795-4967-b87c-469c45ad7f6e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/levels/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will delete a single data based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "298456d8-aecc-4b41-bae9-d47ce6b386c4",
+							"name": "Level - Delete Data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/levels/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"levels",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:17:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "b661a211-a9a1-4ec2-93c0-00b8d5a05514",
+			"description": "A group of request for creating and modifying levels.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bb407ec1-c523-49a9-8d56-f6aa43442df9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "304b1f95-88a2-4220-854f-b244e9ebee0f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Request User",
+			"item": [
+				{
+					"name": "User - Create Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e5868f13-47ac-4092-9e41-3c74ce802600",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "ba1937f9-d730-4c89-8e66-1edbc68bc0f5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "A private request for create a user. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "5e12488d-0b57-4b62-b6bb-59009d4566a3",
+							"name": "User - Create Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "154"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9a-QudRAsgDYQgaaAap93ThC3JbjbI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:17:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Register berhasil!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User - Get All Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ad29bcdb-9ff6-44fe-abc3-560f797873ed",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "834e5eb5-f5c2-46f7-b9cc-362c40de3888",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "This request will return all of your user data. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "9b778121-695d-4f91-b557-d6fce62b24f8",
+							"name": "User - Get All Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "403"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"193-71xi9eEsV8ldJT2EZa8GjQyQvHs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:17:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aaa958177a14e58be5494\",\n            \"name\": \"Administrator\",\n            \"level\": \"admin\",\n            \"username\": \"admin\",\n            \"createdAt\": \"11/9/2022, 2:14:29 AM\",\n            \"updatedAt\": null\n        },\n        {\n            \"_id\": \"636aab4c8177a14e58be54c8\",\n            \"name\": \"Staff A\",\n            \"level\": \"staff\",\n            \"username\": \"staff_a\",\n            \"createdAt\": \"11/9/2022, 2:17:32 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User - Get Single Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bac5781c-22d7-4cd4-b62c-50ed2c9af16b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "3b0425d7-7080-4938-9728-bdadf490b2b5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will return a single data of your user based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "806b917a-debb-44cf-9e3f-1eb6c1a93300",
+							"name": "User - Get Single Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ff-sAYOX2XpJ3/65+nJDeTsND7bUNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:18:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"636aab4c8177a14e58be54c8\",\n        \"name\": \"Staff A\",\n        \"level\": \"staff\",\n        \"username\": \"staff_a\",\n        \"createdAt\": \"11/9/2022, 2:17:32 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User - Update Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3b60138a-e2d3-4509-856a-9fd192ffa994",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "45324dac-bacf-4583-81cf-93b934aa5f6a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff1\",\n    \"password\": \"staff123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will update a single data based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "e8f7f8f0-d579-432e-b0cb-3165c664227c",
+							"name": "User - Update Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff1\",\n    \"password\": \"staff123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"98-zz+8hwL8JG6IgPyH3meIUbm2OMM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:18:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Update berhasil!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User - Delete Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1c8a5c9b-8d58-4cf2-824c-0a84191d25bc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "fcea6479-3ca0-44ee-9f1d-219b98815343",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will delete a single data based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "8ff50a2b-924c-4094-9bb9-c02e6353abba",
+							"name": "User - Delete Data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:18:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "b4b66379-40e5-4b6c-a0b0-ced539f4535a",
+			"description": "A group of request for creating and modifying users.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "08593d7f-ffc5-4f06-bff2-a696abe8672f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f21c6d6f-93f0-4887-883d-b9f483f9db30",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Request Information",
+			"item": [
+				{
+					"name": "Info - Create Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ca4fd8f1-cc22-4502-afe8-badebc317bc1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d77d4310-3844-4084-ad9f-4333fc092ed3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Samples",
+									"type": "text"
+								},
+								{
+									"key": "short_desc",
+									"value": "Sample App Data",
+									"type": "text"
+								},
+								{
+									"key": "long_desc",
+									"value": "Some sample stuff for development purpose",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/apps",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps"
+							]
+						},
+						"description": "A private request for create an app info. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "688e3af2-5783-44eb-b477-096acfe4c273",
+							"name": "Info - Create Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Samples",
+											"type": "text"
+										},
+										{
+											"key": "short_desc",
+											"value": "Sample App Data",
+											"type": "text"
+										},
+										{
+											"key": "long_desc",
+											"value": "Some sample stuff for development purpose",
+											"type": "text"
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+											]
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/apps",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apps"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-LStE7E48ZInckTbNLwNVtghPZyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:18:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil disimpan!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Info - Get All Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b24e1e33-070f-4b33-82df-46e207f55404",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "865edb4c-87ba-4eef-a1c5-92ef465eba31",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/apps",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps"
+							]
+						},
+						"description": "This request will return all of your app info data. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "657a41d9-8dcc-49d6-8b87-1d5aa2ee2880",
+							"name": "Info - Get All Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/apps",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apps"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "453"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c5-vnnVMVYRRdMft91m3arQDD6cVV0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:18:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aab8d8177a14e58be54e1\",\n            \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"name\": \"Samples\",\n            \"long_desc\": \"Some sample stuff for development purpose\",\n            \"short_desc\": \"Sample App Data\",\n            \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"createdAt\": \"11/9/2022, 2:18:37 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Info - Get Single Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a2a3b9d4-24de-4e25-93d4-b1315dfe03c5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "bac25716-92ea-47e4-aeda-d0a5dc267de8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/apps/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will return a single data of your app info based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "e37cb68a-4815-4614-801e-a0aac45d95b3",
+							"name": "Info - Get Single Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/apps/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"apps",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "451"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c3-CzQLricpGdyH4a3X4GGcTcMCuNo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:19:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"636aab8d8177a14e58be54e1\",\n        \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"name\": \"Samples\",\n        \"long_desc\": \"Some sample stuff for development purpose\",\n        \"short_desc\": \"Sample App Data\",\n        \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"createdAt\": \"11/9/2022, 2:18:37 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Info - Update Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "78a81468-2e23-4438-b0c9-9bc894ac41d1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f9322761-f822-4a34-b894-a7cedff3e6ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sample",
+									"type": "text"
+								},
+								{
+									"key": "short_desc",
+									"value": "Sample Edited",
+									"type": "text"
+								},
+								{
+									"key": "long_desc",
+									"value": "Some edited sample stuff for development purpose",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/apps/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will update a single data based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "4c425ec9-5f07-49fd-ac11-1aac8b3eb6b3",
+							"name": "Info - Update Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Sample",
+											"type": "text"
+										},
+										{
+											"key": "short_desc",
+											"value": "Sample Edited",
+											"type": "text"
+										},
+										{
+											"key": "long_desc",
+											"value": "Some edited sample stuff for development purpose",
+											"type": "text"
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+											]
+										},
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/Users/kangketik/Pictures/Wallpapers/genshin.jpeg"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/apps/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"apps",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:19:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil diupdate!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Info - Delete Data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ffec1fd8-5c70-446a-80d7-37db368c2fe4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "6c12cc7c-9dae-4136-aa0e-d2d58d3a586a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/apps/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "This request will delete a single data based on an id that you provide on url. You need an authorization for this request."
+					},
+					"response": [
+						{
+							"id": "cec1bcf9-2d13-4a88-9e0a-775f8aa565a3",
+							"name": "Info - Delete Data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/apps/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"apps",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 19:19:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "b4cab3c8-53b5-41fc-9af1-37071ada7d7a",
+			"description": "A group of request for creating and modifying apps information.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "63f30ef8-59f8-4abd-ace4-f3baff0ec9af",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa6d7632-9e31-4835-a074-b246800e8bd3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "50407147-8364-489a-9ef1-804545f2c11f",
+				"type": "text/javascript",
+				"exec": [
+					"const tokenUrl = pm.variables.get('baseUrl')+\"/auth\"",
+					"",
+					"const getTokenRequest = {",
+					"  method: 'POST',",
+					"  url: tokenUrl,",
+					"  header: {",
+					"      'content-type': 'application/json'",
+					"  },",
+					"  body: {",
+					"      mode: 'raw',",
+					"      raw: JSON.stringify({",
+					"          \"username\": \"admin\",",
+					"          \"password\": \"admin123\"",
+					"      })",
+					"  }",
+					"};",
+					"",
+					"pm.sendRequest(getTokenRequest, (err, response) => {",
+					"  const jsonResponse = response.json();",
+					"  if (jsonResponse.status != \"error\") {",
+					"      const newAccessToken = jsonResponse.data.accessToken;",
+					"      pm.variables.set('accessToken', newAccessToken);",
+					"  } else {",
+					"      console.log(jsonResponse.pesan);",
+					"  }",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "85ac01c8-c35e-4563-b643-013bdb1438fe",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cd4b9136-5950-4592-8275-32678cfd13b2",
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		},
+		{
+			"id": "9a948d31-61ea-41a6-9bec-c670e847f476",
+			"key": "accessToken",
+			"value": "DEFAULT_ACCESS_TOKEN"
+		}
+	]
+}
