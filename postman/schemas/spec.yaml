@@ -19,8 +19,12 @@ components:
       type: http
       scheme: bearer
   schemas:
-    Resources:
-      $ref: '#/components/schemas/Resources'
+    Object:
+      type: object
+    String:
+      type: string
+    Integer:
+      type: 'integer'
 security:
   - bearerAuth: []
 tags:
@@ -45,22 +49,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 code: TKO-0000
                 name: Administrator
                 level: admin
                 username: admin
                 password: admin123
-      security:
-        - noauthAuth: []
       responses:
         '201':
           description: Created
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -69,75 +71,158 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '49'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 19:14:29 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Register berhasil!
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /auth:
     post:
       tags:
@@ -150,19 +235,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 username: admin
                 password: admin123
-      security:
-        - noauthAuth: []
       responses:
         '200':
           description: OK
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -171,72 +254,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '483'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"1e3-LP+oDkRuebVRBWX4L0vIyUvD158"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 19:15:20 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Anda berhasil login!
@@ -245,21 +328,12 @@ paths:
                     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hIjoiQWRtaW5pc3RyYXRvciIsImxldmVsIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3OTM0OTE5LCJleHAiOjE2Njc5Mzg1MTl9.MCDkY0Y3v6I9iwLNUOE8DMxm3z-YZUSw-XBJYxfzpk4
                   refreshToken: >-
                     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hIjoiQWRtaW5pc3RyYXRvciIsImxldmVsIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3OTM0OTE5fQ.Pspd3gs8ReXTra-XAqkjjnbSBJXE0D_BASnUVGqV21A
-  /auth/logout:
-    delete:
-      tags:
-        - Request Auth
-      summary: Authentication Logout
-      description: This request will delete session or token.
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: OK
+        '500':
+          description: Error
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -268,75 +342,248 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
-                example: '52'
+                $ref: '#/components/schemas/Integer'
+                example: '49'
             ETag:
               schema:
-                type: string
-                example: W/"34-6ryZ4f8sjG2UhWlhovJqvn3za2Y"
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
             Date:
               schema:
-                type: string
-                example: Tue, 08 Nov 2022 19:15:40 GMT
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
+  /auth/logout:
+    delete:
+      tags:
+        - Request Auth
+      summary: Authentication Logout
+      description: This request will delete session or token.
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '52'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"34-6ryZ4f8sjG2UhWlhovJqvn3za2Y"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:15:40 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Anda berhasil logout!
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /levels/generate/code:
     get:
       tags:
@@ -349,7 +596,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -358,77 +605,160 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '77'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"4d-TNHuYth8bqGYEEsV0hALvn7DKrc"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:19:24 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
                 data:
                   code: TKO-0001
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /levels:
     post:
       tags:
@@ -441,7 +771,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 code: '{{code}}'
                 name: Staff
@@ -451,7 +781,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -460,72 +790,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '151'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"97-fcr7mP/Wqpk0GYS+o8S4wN4Q2Y4"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:45:59 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Data berhasil disimpan!
@@ -534,6 +864,89 @@ paths:
                   name: Staff
                   createdAt: 11/9/2022, 4:45:59 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     get:
       tags:
         - Request Level
@@ -547,7 +960,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -556,72 +969,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '147'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"93-4zcoprYRKKMQNWxiZZZfUVVEKz4"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:46:14 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
@@ -630,6 +1043,89 @@ paths:
                     name: Staff
                     createdAt: 11/9/2022, 4:45:59 AM
                     updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /levels/{id}:
     get:
       tags:
@@ -642,7 +1138,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -651,7 +1147,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -660,72 +1156,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '145'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"91-zTFHoKQfrDG++b0tVRZqVjrnNAQ"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:47:00 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
@@ -734,6 +1230,89 @@ paths:
                   name: Staff
                   createdAt: 11/9/2022, 4:45:59 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     put:
       tags:
         - Request Level
@@ -745,14 +1324,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 name: Staff Modified
       parameters:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -761,7 +1340,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -770,72 +1349,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '179'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"b3-1TAqanZA+RD0KTflsmODolzXBVA"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:47:28 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Data berhasil diupdate!
@@ -844,6 +1423,89 @@ paths:
                   name: Staff Modified
                   createdAt: 11/9/2022, 4:45:59 AM
                   updatedAt: 11/9/2022, 4:47:28 AM
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     delete:
       tags:
         - Request Level
@@ -855,7 +1517,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -864,7 +1526,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -873,75 +1535,158 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '55'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"37-nTNDKAPTEpqkgrM0yCK1q6iXObY"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 21:47:41 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Data berhasil dihapus!
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /users/generate/code:
     get:
       tags:
@@ -954,7 +1699,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -963,77 +1708,160 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '77'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"4d-TMQ7/PDoaQXtnchhAPwrYsXLbqM"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:11:46 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
                 data:
                   code: TKO-0002
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /users:
     post:
       tags:
@@ -1046,7 +1874,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 code: '{{code}}'
                 name: Staff A
@@ -1059,7 +1887,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1068,72 +1896,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '190'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"be-dj9G01FFH7qyKqhPdXrYhxDwpLA"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:11:58 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Data berhasil disimpan!
@@ -1144,6 +1972,89 @@ paths:
                   username: staff_a
                   createdAt: 11/9/2022, 5:11:58 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     get:
       tags:
         - Request User
@@ -1157,7 +2068,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1166,72 +2077,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '317'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"13d-CzoolZ7oGQ6F6DNYUYR00+wkCaQ"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:12:07 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
@@ -1248,6 +2159,89 @@ paths:
                     username: staff_a
                     createdAt: 11/9/2022, 5:11:58 AM
                     updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /users/{id}:
     get:
       tags:
@@ -1260,7 +2254,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0002
       responses:
@@ -1269,7 +2263,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1278,72 +2272,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '184'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"b8-3KKA1sX0cxPNS0bW/Yh8hoEtxb4"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:12:15 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
@@ -1354,6 +2348,89 @@ paths:
                   username: staff_a
                   createdAt: 11/9/2022, 5:11:58 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     put:
       tags:
         - Request User
@@ -1365,7 +2442,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               example:
                 name: Staff A
                 level: staff
@@ -1375,7 +2452,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0002
       responses:
@@ -1384,7 +2461,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1393,72 +2470,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '201'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"c9-Ao5MdwKfvq7utrta/EIGaFdQu0U"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:12:23 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Update berhasil!
@@ -1469,6 +2546,89 @@ paths:
                   username: staff1
                   createdAt: 11/9/2022, 5:11:58 AM
                   updatedAt: 11/9/2022, 5:12:23 AM
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     delete:
       tags:
         - Request User
@@ -1480,7 +2640,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0002
       responses:
@@ -1489,7 +2649,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1498,75 +2658,158 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '55'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"37-nTNDKAPTEpqkgrM0yCK1q6iXObY"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:12:30 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Data berhasil dihapus!
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /apps/generate/code:
     get:
       tags:
@@ -1579,7 +2822,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1588,77 +2831,160 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '77'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"4d-TNHuYth8bqGYEEsV0hALvn7DKrc"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:22:30 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 message: Request berhasil!
                 data:
                   code: TKO-0001
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /apps:
     post:
       tags:
@@ -1671,22 +2997,22 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               properties:
                 code:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: '{{code}}'
                 name:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Samples
                 short_desc:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Sample App Data
                 long_desc:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Some sample stuff for development purpose
                 files:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   format: binary
       responses:
         '201':
@@ -1694,7 +3020,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1703,72 +3029,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '384'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"180-SJ4Fp6XfX7ElVrKwV0vOv0hiz5k"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:22:39 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Data berhasil disimpan!
@@ -1781,6 +3107,89 @@ paths:
                   background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                   createdAt: 11/9/2022, 5:22:39 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     get:
       tags:
         - Request Information
@@ -1794,7 +3203,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1803,72 +3212,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '380'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"17c-/Qr/FooJlBW5uIs/PXZk7LwMjAw"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:22:48 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Request berhasil!
@@ -1883,6 +3292,89 @@ paths:
                       /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                     createdAt: 11/9/2022, 5:22:39 AM
                     updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
   /apps/{id}:
     get:
       tags:
@@ -1895,7 +3387,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -1904,7 +3396,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -1913,72 +3405,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '378'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"17a-lwl+fUUBu7+mRC24qGIspPqCloU"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:22:59 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Request berhasil!
@@ -1991,6 +3483,89 @@ paths:
                   background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                   createdAt: 11/9/2022, 5:22:39 AM
                   updatedAt: null
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     put:
       tags:
         - Request Information
@@ -2002,25 +3577,25 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Resources'
+              $ref: '#/components/schemas/Object'
               properties:
                 name:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Sample
                 short_desc:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Sample Edited
                 long_desc:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   example: Some edited sample stuff for development purpose
                 files:
-                  type: string
+                  $ref: '#/components/schemas/String'
                   format: binary
       parameters:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -2029,7 +3604,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -2038,72 +3613,72 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '407'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"197-cFvFBd7EmJx0h6l+jGqHKikF+tY"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:23:15 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Data berhasil diupdate!
@@ -2116,6 +3691,89 @@ paths:
                   background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                   createdAt: 11/9/2022, 5:22:39 AM
                   updatedAt: 11/9/2022, 5:23:15 AM
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
     delete:
       tags:
         - Request Information
@@ -2127,7 +3785,7 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/String'
           required: true
           example: TKO-0001
       responses:
@@ -2136,7 +3794,7 @@ paths:
           headers:
             Content-Security-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: >-
                   default-src 'self';base-uri
                   'self';block-all-mixed-content;font-src 'self' https:
@@ -2145,72 +3803,155 @@ paths:
                   'self' https: 'unsafe-inline';upgrade-insecure-requests
             X-DNS-Prefetch-Control:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: 'off'
             Expect-CT:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=0
             X-Frame-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: SAMEORIGIN
             Strict-Transport-Security:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: max-age=15552000; includeSubDomains
             X-Download-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: noopen
             X-Content-Type-Options:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: nosniff
             X-Permitted-Cross-Domain-Policies:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: none
             Referrer-Policy:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: no-referrer
             X-XSS-Protection:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '0'
             Access-Control-Allow-Origin:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: '*'
             Content-Type:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: application/json; charset=utf-8
             Content-Length:
               schema:
-                type: integer
+                $ref: '#/components/schemas/Integer'
                 example: '53'
             ETag:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: W/"35-wBsZgU7LrgcAuNXHIzit4l/oUf8"
             Date:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: Tue, 08 Nov 2022 22:23:24 GMT
             Connection:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: keep-alive
             Keep-Alive:
               schema:
-                type: string
+                $ref: '#/components/schemas/String'
                 example: timeout=5
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Resources'
+                $ref: '#/components/schemas/Object'
               example:
                 status: success
                 pesan: Data berhasil dihapus!
+        '500':
+          description: Error
+          headers:
+            Content-Security-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: 'off'
+            Expect-CT:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: none
+            Referrer-Policy:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: '*'
+            Content-Type:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                $ref: '#/components/schemas/Integer'
+                example: '49'
+            ETag:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: W/"31-neLAorBDWiongt6B36xaie3DHtI"
+            Date:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: Tue, 08 Nov 2022 19:14:29 GMT
+            Connection:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                $ref: '#/components/schemas/String'
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+              example:
+                status: error
+                pesan: Internal Server Error!
