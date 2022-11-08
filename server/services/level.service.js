@@ -26,7 +26,7 @@ services.one = (name) => {
 
 services.findByID = (id) => {
 	return new Promise((resolve, reject) => {
-		levelModel.findById(id).then(results => {
+		levelModel.findOne({ code: id }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);
@@ -46,7 +46,7 @@ services.create = (data) => {
 
 services.update = (id, data) => {
 	return new Promise((resolve, reject) => {
-		levelModel.findByIdAndUpdate(id, data).then(results => {
+		levelModel.findOneAndUpdate({ code: id }, data, { new: true }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);
@@ -56,7 +56,7 @@ services.update = (id, data) => {
 
 services.delete = (id) => {
 	return new Promise((resolve, reject) => {
-		levelModel.findByIdAndDelete(id).then(results => {
+		levelModel.findOneAndDelete({ code: id }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);

@@ -44,7 +44,7 @@ exports.logoutRequest = async (req, res) => {
 	if (!req.body.token) return res.status(401).send({ status: "error", pesan: "Harap sertakan token!" });
 	// Hapus session
 	let results = await services.delete(req.body.token);
-	if (!results) return res.status(500).send({ status: "error", pesan: `${e}` });
+	if (!results) return res.status(500).send({ status: "error", pesan: `${results}` });
 	// Menghapus token yang dikirim pada variable token.
 	refreshTokens = refreshTokens.filter(token => token !== req.body.token);
 	return res.json({ status: "success", pesan: "Anda berhasil logout!" })

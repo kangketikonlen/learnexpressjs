@@ -24,6 +24,16 @@ services.one = (username) => {
 	})
 };
 
+services.findByID = (id) => {
+	return new Promise((resolve, reject) => {
+		userModel.findOne({ code: id }).then(results => {
+			resolve(results);
+		}).catch(err => {
+			reject(err);
+		});
+	})
+};
+
 services.save = (data) => {
 	return new Promise((resolve, reject) => {
 		userModel.create(data).then(results => {
@@ -34,9 +44,9 @@ services.save = (data) => {
 	})
 }
 
-services.update = (username, data) => {
+services.update = (id, data) => {
 	return new Promise((resolve, reject) => {
-		userModel.findOneAndUpdate({ username: username }, data).then(results => {
+		userModel.findOneAndUpdate({ code: id }, data, { new: true }).then(results => {
 			return resolve(results);
 		}).catch(err => {
 			return reject(err);
@@ -44,9 +54,9 @@ services.update = (username, data) => {
 	})
 }
 
-services.delete = (username) => {
+services.delete = (id) => {
 	return new Promise((resolve, reject) => {
-		userModel.findOneAndDelete({ username: username }).then(results => {
+		userModel.findOneAndDelete({ code: id }).then(results => {
 			return resolve(results);
 		}).catch(err => {
 			return reject(err);

@@ -1,6 +1,6 @@
 const winston = require('winston');
-const { format, transports } = require('winston');
-const { combine, timestamp, printf } = format;
+const { format } = require('winston');
+const { combine, printf } = format;
 require('winston-daily-rotate-file');
 
 var transport = new (winston.transports.DailyRotateFile)({
@@ -8,10 +8,10 @@ var transport = new (winston.transports.DailyRotateFile)({
     datePattern: 'YYYY-MM-DD-HH',
     zippedArchive: true,
     maxSize: '20m',
-    maxFiles: '14d'
+    maxFiles: '1m'
 });
 
-const myFormat = printf(({ level, message, label, timestamp }) => {
+const myFormat = printf(({ level, message }) => {
     return `${level}: ${message}`;
 });
 
@@ -26,7 +26,7 @@ var logger = winston.createLogger({
 });
 
 logger.stream = {
-    write: function (message, encoding) {
+    write: function (message) {
         // use the 'info' log level so the output will be picked up by both transports (file and console)
         logger.info(message);
     },
