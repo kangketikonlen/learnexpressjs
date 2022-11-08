@@ -47,6 +47,7 @@ paths:
             schema:
               type: object
               example:
+                code: TKO-0000
                 name: Administrator
                 level: admin
                 username: admin
@@ -336,6 +337,98 @@ paths:
               example:
                 status: success
                 pesan: Anda berhasil logout!
+  /levels/generate/code:
+    get:
+      tags:
+        - Request Level
+      summary: Level - Generate ID Data
+      description: A request for generate code for identifier data.
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            Expect-CT:
+              schema:
+                type: string
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '77'
+            ETag:
+              schema:
+                type: string
+                example: W/"4d-TNHuYth8bqGYEEsV0hALvn7DKrc"
+            Date:
+              schema:
+                type: string
+                example: Tue, 08 Nov 2022 21:19:24 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: Request berhasil!
+                data:
+                  code: TKO-0001
   /levels:
     post:
       tags:
@@ -350,6 +443,7 @@ paths:
             schema:
               type: object
               example:
+                code: '{{code}}'
                 name: Staff
       responses:
         '201':
@@ -411,15 +505,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '159'
+                example: '151'
             ETag:
               schema:
                 type: string
-                example: W/"9f-LStE7E48ZInckTbNLwNVtghPZyU"
+                example: W/"97-fcr7mP/Wqpk0GYS+o8S4wN4Q2Y4"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:15:53 GMT
+                example: Tue, 08 Nov 2022 21:45:59 GMT
             Connection:
               schema:
                 type: string
@@ -434,13 +528,12 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Data berhasil disimpan!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Data berhasil disimpan!
+                data:
+                  code: TKO-0001
+                  name: Staff
+                  createdAt: 11/9/2022, 4:45:59 AM
+                  updatedAt: null
     get:
       tags:
         - Request Level
@@ -508,15 +601,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '218'
+                example: '147'
             ETag:
               schema:
                 type: string
-                example: W/"da-AfELM1XYcQhc8h9FG/jeUqRaIQM"
+                example: W/"93-4zcoprYRKKMQNWxiZZZfUVVEKz4"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:16:08 GMT
+                example: Tue, 08 Nov 2022 21:46:14 GMT
             Connection:
               schema:
                 type: string
@@ -530,17 +623,13 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                message: Request berhasil!
                 data:
-                  - _id: 636aaae98177a14e58be54ab
+                  - code: TKO-0001
                     name: Staff
-                    createdAt: 11/9/2022, 2:15:53 AM
+                    createdAt: 11/9/2022, 4:45:59 AM
                     updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
   /levels/{id}:
     get:
       tags:
@@ -555,7 +644,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 636aae3d8177a14e58be54fe
+          example: TKO-0001
       responses:
         '200':
           description: OK
@@ -616,15 +705,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '216'
+                example: '145'
             ETag:
               schema:
                 type: string
-                example: W/"d8-RV3ZBFPMIBVtw9h9vz5g2iERv1g"
+                example: W/"91-zTFHoKQfrDG++b0tVRZqVjrnNAQ"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:16:39 GMT
+                example: Tue, 08 Nov 2022 21:47:00 GMT
             Connection:
               schema:
                 type: string
@@ -638,17 +727,13 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                message: Request berhasil!
                 data:
-                  _id: 636aaae98177a14e58be54ab
+                  code: TKO-0001
                   name: Staff
-                  createdAt: 11/9/2022, 2:15:53 AM
+                  createdAt: 11/9/2022, 4:45:59 AM
                   updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
     put:
       tags:
         - Request Level
@@ -669,6 +754,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0001
       responses:
         '201':
           description: Created
@@ -729,15 +815,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '159'
+                example: '179'
             ETag:
               schema:
                 type: string
-                example: W/"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc"
+                example: W/"b3-1TAqanZA+RD0KTflsmODolzXBVA"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:16:56 GMT
+                example: Tue, 08 Nov 2022 21:47:28 GMT
             Connection:
               schema:
                 type: string
@@ -752,13 +838,12 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Data berhasil diupdate!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Data berhasil diupdate!
+                data:
+                  code: TKO-0001
+                  name: Staff Modified
+                  createdAt: 11/9/2022, 4:45:59 AM
+                  updatedAt: 11/9/2022, 4:47:28 AM
     delete:
       tags:
         - Request Level
@@ -772,6 +857,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0001
       responses:
         '201':
           description: Created
@@ -832,15 +918,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '158'
+                example: '55'
             ETag:
               schema:
                 type: string
-                example: W/"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU"
+                example: W/"37-nTNDKAPTEpqkgrM0yCK1q6iXObY"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:17:17 GMT
+                example: Tue, 08 Nov 2022 21:47:41 GMT
             Connection:
               schema:
                 type: string
@@ -855,13 +941,99 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Data berhasil dihapus!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Data berhasil dihapus!
+  /users/generate/code:
+    get:
+      tags:
+        - Request User
+      summary: User - Generate ID Data
+      description: A request for generate code for identifier data.
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            Expect-CT:
+              schema:
+                type: string
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '77'
+            ETag:
+              schema:
+                type: string
+                example: W/"4d-TMQ7/PDoaQXtnchhAPwrYsXLbqM"
+            Date:
+              schema:
+                type: string
+                example: Tue, 08 Nov 2022 22:11:46 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: Request berhasil!
+                data:
+                  code: TKO-0002
   /users:
     post:
       tags:
@@ -876,6 +1048,7 @@ paths:
             schema:
               type: object
               example:
+                code: '{{code}}'
                 name: Staff A
                 level: staff
                 username: staff_a
@@ -940,15 +1113,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '154'
+                example: '190'
             ETag:
               schema:
                 type: string
-                example: W/"9a-QudRAsgDYQgaaAap93ThC3JbjbI"
+                example: W/"be-dj9G01FFH7qyKqhPdXrYhxDwpLA"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:17:32 GMT
+                example: Tue, 08 Nov 2022 22:11:58 GMT
             Connection:
               schema:
                 type: string
@@ -963,13 +1136,14 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Register berhasil!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Data berhasil disimpan!
+                data:
+                  code: TKO-0002
+                  name: Staff A
+                  level: staff
+                  username: staff_a
+                  createdAt: 11/9/2022, 5:11:58 AM
+                  updatedAt: null
     get:
       tags:
         - Request User
@@ -1037,15 +1211,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '403'
+                example: '317'
             ETag:
               schema:
                 type: string
-                example: W/"193-71xi9eEsV8ldJT2EZa8GjQyQvHs"
+                example: W/"13d-CzoolZ7oGQ6F6DNYUYR00+wkCaQ"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:17:42 GMT
+                example: Tue, 08 Nov 2022 22:12:07 GMT
             Connection:
               schema:
                 type: string
@@ -1059,25 +1233,21 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                message: Request berhasil!
                 data:
-                  - _id: 636aaa958177a14e58be5494
+                  - code: TKO-0001
                     name: Administrator
                     level: admin
                     username: admin
-                    createdAt: 11/9/2022, 2:14:29 AM
+                    createdAt: 11/9/2022, 5:01:34 AM
                     updatedAt: null
-                  - _id: 636aab4c8177a14e58be54c8
+                  - code: TKO-0002
                     name: Staff A
                     level: staff
                     username: staff_a
-                    createdAt: 11/9/2022, 2:17:32 AM
+                    createdAt: 11/9/2022, 5:11:58 AM
                     updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
   /users/{id}:
     get:
       tags:
@@ -1092,6 +1262,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0002
       responses:
         '200':
           description: OK
@@ -1152,15 +1323,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '255'
+                example: '184'
             ETag:
               schema:
                 type: string
-                example: W/"ff-sAYOX2XpJ3/65+nJDeTsND7bUNA"
+                example: W/"b8-3KKA1sX0cxPNS0bW/Yh8hoEtxb4"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:18:03 GMT
+                example: Tue, 08 Nov 2022 22:12:15 GMT
             Connection:
               schema:
                 type: string
@@ -1174,19 +1345,15 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                message: Request berhasil!
                 data:
-                  _id: 636aab4c8177a14e58be54c8
+                  code: TKO-0002
                   name: Staff A
                   level: staff
                   username: staff_a
-                  createdAt: 11/9/2022, 2:17:32 AM
+                  createdAt: 11/9/2022, 5:11:58 AM
                   updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
     put:
       tags:
         - Request User
@@ -1210,6 +1377,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0002
       responses:
         '200':
           description: OK
@@ -1270,15 +1438,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '152'
+                example: '201'
             ETag:
               schema:
                 type: string
-                example: W/"98-zz+8hwL8JG6IgPyH3meIUbm2OMM"
+                example: W/"c9-Ao5MdwKfvq7utrta/EIGaFdQu0U"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:18:20 GMT
+                example: Tue, 08 Nov 2022 22:12:23 GMT
             Connection:
               schema:
                 type: string
@@ -1293,13 +1461,14 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Update berhasil!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Update berhasil!
+                data:
+                  code: TKO-0002
+                  name: Staff A
+                  level: staff
+                  username: staff1
+                  createdAt: 11/9/2022, 5:11:58 AM
+                  updatedAt: 11/9/2022, 5:12:23 AM
     delete:
       tags:
         - Request User
@@ -1313,6 +1482,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0002
       responses:
         '200':
           description: OK
@@ -1373,15 +1543,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '158'
+                example: '55'
             ETag:
               schema:
                 type: string
-                example: W/"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU"
+                example: W/"37-nTNDKAPTEpqkgrM0yCK1q6iXObY"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:18:27 GMT
+                example: Tue, 08 Nov 2022 22:12:30 GMT
             Connection:
               schema:
                 type: string
@@ -1396,13 +1566,99 @@ paths:
                 type: object
               example:
                 status: success
-                pesan: Data berhasil dihapus!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                message: Data berhasil dihapus!
+  /apps/generate/code:
+    get:
+      tags:
+        - Request Information
+      summary: Info - Generate ID Data
+      description: A request for generate code for identifier data.
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri
+                  'self';block-all-mixed-content;font-src 'self' https:
+                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
+                  'none';script-src 'self';script-src-attr 'none';style-src
+                  'self' https: 'unsafe-inline';upgrade-insecure-requests
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            Expect-CT:
+              schema:
+                type: string
+                example: max-age=0
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15552000; includeSubDomains
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '77'
+            ETag:
+              schema:
+                type: string
+                example: W/"4d-TNHuYth8bqGYEEsV0hALvn7DKrc"
+            Date:
+              schema:
+                type: string
+                example: Tue, 08 Nov 2022 22:22:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: Request berhasil!
+                data:
+                  code: TKO-0001
   /apps:
     post:
       tags:
@@ -1417,6 +1673,9 @@ paths:
             schema:
               type: object
               properties:
+                code:
+                  type: string
+                  example: '{{code}}'
                 name:
                   type: string
                   example: Samples
@@ -1489,15 +1748,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '159'
+                example: '384'
             ETag:
               schema:
                 type: string
-                example: W/"9f-LStE7E48ZInckTbNLwNVtghPZyU"
+                example: W/"180-SJ4Fp6XfX7ElVrKwV0vOv0hiz5k"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:18:37 GMT
+                example: Tue, 08 Nov 2022 22:22:39 GMT
             Connection:
               schema:
                 type: string
@@ -1513,12 +1772,15 @@ paths:
               example:
                 status: success
                 pesan: Data berhasil disimpan!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                data:
+                  code: TKO-0001
+                  logo: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
+                  name: Samples
+                  long_desc: Some sample stuff for development purpose
+                  short_desc: Sample App Data
+                  background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
+                  createdAt: 11/9/2022, 5:22:39 AM
+                  updatedAt: null
     get:
       tags:
         - Request Information
@@ -1586,15 +1848,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '453'
+                example: '380'
             ETag:
               schema:
                 type: string
-                example: W/"1c5-vnnVMVYRRdMft91m3arQDD6cVV0"
+                example: W/"17c-/Qr/FooJlBW5uIs/PXZk7LwMjAw"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:18:49 GMT
+                example: Tue, 08 Nov 2022 22:22:48 GMT
             Connection:
               schema:
                 type: string
@@ -1608,8 +1870,10 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                pesan: Request berhasil!
                 data:
-                  - _id: 636aab8d8177a14e58be54e1
+                  - code: TKO-0001
                     logo: >-
                       /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                     name: Samples
@@ -1617,14 +1881,8 @@ paths:
                     short_desc: Sample App Data
                     background: >-
                       /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
-                    createdAt: 11/9/2022, 2:18:37 AM
+                    createdAt: 11/9/2022, 5:22:39 AM
                     updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
   /apps/{id}:
     get:
       tags:
@@ -1639,6 +1897,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0001
       responses:
         '200':
           description: OK
@@ -1699,15 +1958,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '451'
+                example: '378'
             ETag:
               schema:
                 type: string
-                example: W/"1c3-CzQLricpGdyH4a3X4GGcTcMCuNo"
+                example: W/"17a-lwl+fUUBu7+mRC24qGIspPqCloU"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:19:02 GMT
+                example: Tue, 08 Nov 2022 22:22:59 GMT
             Connection:
               schema:
                 type: string
@@ -1721,21 +1980,17 @@ paths:
               schema:
                 type: object
               example:
+                status: success
+                pesan: Request berhasil!
                 data:
-                  _id: 636aab8d8177a14e58be54e1
+                  code: TKO-0001
                   logo: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
                   name: Samples
                   long_desc: Some sample stuff for development purpose
                   short_desc: Sample App Data
                   background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
-                  createdAt: 11/9/2022, 2:18:37 AM
+                  createdAt: 11/9/2022, 5:22:39 AM
                   updatedAt: null
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
     put:
       tags:
         - Request Information
@@ -1767,6 +2022,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0001
       responses:
         '201':
           description: Created
@@ -1827,15 +2083,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '159'
+                example: '407'
             ETag:
               schema:
                 type: string
-                example: W/"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc"
+                example: W/"197-cFvFBd7EmJx0h6l+jGqHKikF+tY"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:19:16 GMT
+                example: Tue, 08 Nov 2022 22:23:15 GMT
             Connection:
               schema:
                 type: string
@@ -1851,12 +2107,15 @@ paths:
               example:
                 status: success
                 pesan: Data berhasil diupdate!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553
+                data:
+                  code: TKO-0001
+                  logo: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
+                  name: Sample
+                  long_desc: Some edited sample stuff for development purpose
+                  short_desc: Sample Edited
+                  background: /public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg
+                  createdAt: 11/9/2022, 5:22:39 AM
+                  updatedAt: 11/9/2022, 5:23:15 AM
     delete:
       tags:
         - Request Information
@@ -1870,6 +2129,7 @@ paths:
           schema:
             type: string
           required: true
+          example: TKO-0001
       responses:
         '201':
           description: Created
@@ -1930,15 +2190,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '158'
+                example: '53'
             ETag:
               schema:
                 type: string
-                example: W/"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU"
+                example: W/"35-wBsZgU7LrgcAuNXHIzit4l/oUf8"
             Date:
               schema:
                 type: string
-                example: Tue, 08 Nov 2022 19:19:34 GMT
+                example: Tue, 08 Nov 2022 22:23:24 GMT
             Connection:
               schema:
                 type: string
@@ -1954,9 +2214,3 @@ paths:
               example:
                 status: success
                 pesan: Data berhasil dihapus!
-                sessions:
-                  nama: Administrator
-                  level: admin
-                  username: admin
-                  iat: 1667934953
-                  exp: 1667938553

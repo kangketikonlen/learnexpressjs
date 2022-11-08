@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "a3385e28-9800-403b-bd84-2d3144d9f4de",
+		"_postman_id": "dac8a6a0-a347-4fc1-a718-4296a412af2c",
 		"name": "Collection - Learn Express JS",
 		"description": "API Endpoint for Learn Express JS backend apps.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "6505881-a3385e28-9800-403b-bd84-2d3144d9f4de"
+		"_uid": "6505881-dac8a6a0-a347-4fc1-a718-4296a412af2c"
 	},
 	"item": [
 		{
@@ -12,7 +12,7 @@
 			"item": [
 				{
 					"name": "Register Administrator",
-					"id": "594526bd-b231-4abd-be61-e3f975938d06",
+					"id": "674e5c5d-12bd-41a5-b7e9-96872b0a8b21",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -24,7 +24,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Administrator\",\n    \"level\": \"admin\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
+							"raw": "{\n    \"code\": \"TKO-0000\",\n    \"name\": \"Administrator\",\n    \"level\": \"admin\",\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 					},
 					"response": [
 						{
-							"id": "ef11ea84-eb15-4d14-899e-24ebfb4de968",
+							"id": "d803b198-cfac-4212-8b30-41095d03caf5",
 							"name": "Register Administrator",
 							"originalRequest": {
 								"method": "POST",
@@ -153,7 +153,7 @@
 				},
 				{
 					"name": "Authentication Login",
-					"id": "7ad54ddb-b29e-44fe-831a-f7e3f9d87dc0",
+					"id": "b578d82a-d3fb-49bb-8642-444d1dc080aa",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -185,7 +185,7 @@
 					},
 					"response": [
 						{
-							"id": "1a9d4f7f-1f2b-4939-9a47-26c53c49de7f",
+							"id": "766b5014-9738-4bb0-a7ab-7da2f7164632",
 							"name": "Authentication Login",
 							"originalRequest": {
 								"method": "POST",
@@ -296,37 +296,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c67c78bb-ee2b-4691-b96a-c43ecced6fdf",
+								"id": "ac9b7e3e-aac0-432d-9e9a-fdc2a67b5c86",
 								"exec": [
-									"const tokenUrl = pm.variables.get('baseUrl')+\"/auth\"",
-									"",
-									"const getTokenRequest = {",
-									"  method: 'POST',",
-									"  url: tokenUrl,",
-									"  header: {",
-									"      'content-type': 'application/json'",
-									"  },",
-									"  body: {",
-									"      mode: 'raw',",
-									"      raw: JSON.stringify({",
-									"          \"username\": \"admin\",",
-									"          \"password\": \"admin123\"",
-									"      })",
-									"  }",
-									"};",
-									"",
-									"pm.sendRequest(getTokenRequest, (err, response) => {",
-									"  const jsonResponse = response.json();",
-									"  const newRefreshToken = jsonResponse.data.refreshToken;",
-									"",
-									"  pm.variables.set('refresh_token', newRefreshToken);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "0e0e213f-f42c-4bd1-9b3f-a75aea0c330f",
+					"id": "503c74dd-aa16-42e4-98b8-882d6cf80e3c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -338,7 +316,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"{{refresh_token}}\"\n}",
+							"raw": "{\n    \"token\": \"{{refreshToken}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -359,7 +337,7 @@
 					},
 					"response": [
 						{
-							"id": "f586fdf2-8f88-44e2-883d-268ada84f4bb",
+							"id": "09b47a3c-ab04-4fb9-927d-e31ae79e79da",
 							"name": "Authentication Logout",
 							"originalRequest": {
 								"method": "DELETE",
@@ -466,7 +444,7 @@
 					]
 				}
 			],
-			"id": "27ae8fe5-edb6-4e86-b86c-7c96ed4d9352",
+			"id": "22c72a80-6eae-444f-b2f0-979d6cbd7ace",
 			"description": "A group of request for creating and modifying sessions.",
 			"auth": {
 				"type": "noauth"
@@ -475,7 +453,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7bb48e20-3f19-41e9-91e7-3427eed52d33",
+						"id": "b0f4a11e-726f-4f16-85eb-f987044a4607",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -485,7 +463,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6e253b59-d30e-4f53-9cc6-8040b190e648",
+						"id": "15c20b5c-1218-47f1-9fc0-fdae6391a8e1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -498,20 +476,165 @@
 			"name": "Request Level",
 			"item": [
 				{
+					"name": "Level - Generate ID Data",
+					"id": "f136e537-532b-4ab9-8686-32c0be183677",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/levels/generate/code",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"levels",
+								"generate",
+								"code"
+							]
+						},
+						"description": "A request for generate code for identifier data."
+					},
+					"response": [
+						{
+							"id": "b751f60f-2a2e-4551-87dd-b80eaeec0e80",
+							"name": "Level - Generate ID Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/levels/generate/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"levels",
+										"generate",
+										"code"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-TNHuYth8bqGYEEsV0hALvn7DKrc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 21:19:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0001\"\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Level - Create Data",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c58feb29-9ff4-4c9c-92fc-6c60fa28413f",
+								"id": "d114bb9d-d047-488e-a920-38af6075c3ad",
 								"exec": [
-									""
+									"const dataUrl = pm.variables.get('baseUrl')+\"/levels/generate/code\"",
+									"",
+									"const getTokenRequest = {",
+									"  method: 'GET',",
+									"  url: dataUrl,",
+									"  header: {",
+									"      'content-type': 'application/json',",
+									"      'Authorization': 'Bearer ' + pm.variables.get(\"accessToken\")",
+									"  }",
+									"};",
+									"",
+									"pm.sendRequest(getTokenRequest, (err, response) => {",
+									"    if(response.code == 200) {",
+									"        const responseJson = response.json();",
+									"        if(responseJson.status == \"success\") {",
+									"            const newCode = responseJson.data.code;",
+									"            pm.variables.set(\"code\", newCode);",
+									"        } else {",
+									"            console.log(responseJson.message);",
+									"        }",
+									"    } else {",
+									"        console.log(err);",
+									"    }",
+									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "64bd8943-74d4-4fe0-b1ac-df60b6163d89",
+					"id": "bb6c7b62-8985-4fff-abc4-6c4ac600e94d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -520,7 +643,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Staff\"\n}",
+							"raw": "{\n    \"code\": \"{{code}}\",\n    \"name\": \"Staff\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -540,14 +663,14 @@
 					},
 					"response": [
 						{
-							"id": "cb6e7161-3d5e-4984-b777-ca52938dc94f",
+							"id": "7b3e2776-efb6-4d4d-83b0-1b472a5ab870",
 							"name": "Level - Create Data",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Staff\"\n}",
+									"raw": "{\n    \"code\": \"{{code}}\",\n    \"name\": \"Staff\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -555,14 +678,14 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/levels",
+									"raw": "http://localhost:3000/v1/levels",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"api",
+										"v1",
 										"levels"
 									]
 								}
@@ -621,15 +744,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "159"
+									"value": "151"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9f-LStE7E48ZInckTbNLwNVtghPZyU\""
+									"value": "W/\"97-fcr7mP/Wqpk0GYS+o8S4wN4Q2Y4\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:15:53 GMT"
+									"value": "Tue, 08 Nov 2022 21:45:59 GMT"
 								},
 								{
 									"key": "Connection",
@@ -641,7 +764,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil disimpan!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data berhasil disimpan!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"name\": \"Staff\",\n        \"createdAt\": \"11/9/2022, 4:45:59 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -651,7 +774,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0098570f-a158-4e57-aba2-02076f88984f",
+								"id": "9ed873e7-8709-43a9-a0f5-df17a640b9a6",
 								"exec": [
 									""
 								],
@@ -659,7 +782,7 @@
 							}
 						}
 					],
-					"id": "b80c1267-4d0a-4964-832c-0998eb92b0b3",
+					"id": "2fcae6a7-8e23-42d5-a92d-c15fb4e0b416",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -679,20 +802,20 @@
 					},
 					"response": [
 						{
-							"id": "763dd0ae-ea7a-49b8-b553-7af2703b815b",
+							"id": "b80dff91-74f8-4587-9d5c-73ec02a879e1",
 							"name": "Level - Get All Data",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/levels",
+									"raw": "http://localhost:3000/v1/levels",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"api",
+										"v1",
 										"levels"
 									]
 								}
@@ -751,15 +874,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "218"
+									"value": "147"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"da-AfELM1XYcQhc8h9FG/jeUqRaIQM\""
+									"value": "W/\"93-4zcoprYRKKMQNWxiZZZfUVVEKz4\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:16:08 GMT"
+									"value": "Tue, 08 Nov 2022 21:46:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -771,7 +894,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aaae98177a14e58be54ab\",\n            \"name\": \"Staff\",\n            \"createdAt\": \"11/9/2022, 2:15:53 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": [\n        {\n            \"code\": \"TKO-0001\",\n            \"name\": \"Staff\",\n            \"createdAt\": \"11/9/2022, 4:45:59 AM\",\n            \"updatedAt\": null\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -781,7 +904,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0e3f0aee-f8fd-4742-a0ac-9d22e5837f42",
+								"id": "3bd00191-a2e3-4683-ab0c-46f173435eac",
 								"exec": [
 									""
 								],
@@ -789,7 +912,7 @@
 							}
 						}
 					],
-					"id": "31b330d3-9b57-449a-b660-a967b5182fa6",
+					"id": "b9842e19-5a44-41e9-b788-97320bf3906a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -808,7 +931,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "636aae3d8177a14e58be54fe"
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -816,27 +939,27 @@
 					},
 					"response": [
 						{
-							"id": "451405ca-b65c-4cea-b5d9-6b4d0eab6dd4",
+							"id": "b5bfd5ae-626e-48b1-a4c9-0eb1474336ca",
 							"name": "Level - Get Single Data",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/levels/:id",
+									"raw": "http://localhost:3000/v1/levels/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"api",
+										"v1",
 										"levels",
 										":id"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -895,15 +1018,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "216"
+									"value": "145"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d8-RV3ZBFPMIBVtw9h9vz5g2iERv1g\""
+									"value": "W/\"91-zTFHoKQfrDG++b0tVRZqVjrnNAQ\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:16:39 GMT"
+									"value": "Tue, 08 Nov 2022 21:47:00 GMT"
 								},
 								{
 									"key": "Connection",
@@ -915,7 +1038,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"_id\": \"636aaae98177a14e58be54ab\",\n        \"name\": \"Staff\",\n        \"createdAt\": \"11/9/2022, 2:15:53 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"name\": \"Staff\",\n        \"createdAt\": \"11/9/2022, 4:45:59 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -925,7 +1048,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0a7e6c85-209d-4fc4-9a93-bc784bb576e3",
+								"id": "70aa4e0e-2c61-444e-a458-6b86bad94356",
 								"exec": [
 									""
 								],
@@ -933,7 +1056,7 @@
 							}
 						}
 					],
-					"id": "1a391f6f-31e0-4c62-91bf-32a2a0130944",
+					"id": "bbadeaa6-62a5-413d-8def-3b781a6a09e6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -961,7 +1084,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -969,7 +1092,7 @@
 					},
 					"response": [
 						{
-							"id": "7b176938-fad4-44ee-8f9e-a7df584e8532",
+							"id": "7a74af82-a478-43dc-9ed9-6b4252ea5cea",
 							"name": "Level - Update Data",
 							"originalRequest": {
 								"method": "PUT",
@@ -984,21 +1107,21 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/levels/:id",
+									"raw": "http://localhost:3000/v1/levels/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"api",
+										"v1",
 										"levels",
 										":id"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -1057,15 +1180,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "159"
+									"value": "179"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc\""
+									"value": "W/\"b3-1TAqanZA+RD0KTflsmODolzXBVA\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:16:56 GMT"
+									"value": "Tue, 08 Nov 2022 21:47:28 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1077,7 +1200,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil diupdate!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data berhasil diupdate!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"name\": \"Staff Modified\",\n        \"createdAt\": \"11/9/2022, 4:45:59 AM\",\n        \"updatedAt\": \"11/9/2022, 4:47:28 AM\"\n    }\n}"
 						}
 					]
 				},
@@ -1087,7 +1210,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fec58c83-d1be-4734-a524-cdcad6336d23",
+								"id": "38267bca-66a9-4784-af65-155b4c5b32dc",
 								"exec": [
 									""
 								],
@@ -1095,7 +1218,7 @@
 							}
 						}
 					],
-					"id": "910f2d65-8795-4967-b87c-469c45ad7f6e",
+					"id": "3b984a66-be03-4e68-b2e9-edd6e6115f7f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1114,7 +1237,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -1122,27 +1245,27 @@
 					},
 					"response": [
 						{
-							"id": "298456d8-aecc-4b41-bae9-d47ce6b386c4",
+							"id": "b183ed65-6d2c-4895-921d-d912a664830b",
 							"name": "Level - Delete Data",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/levels/:id",
+									"raw": "http://localhost:3000/v1/levels/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"api",
+										"v1",
 										"levels",
 										":id"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -1201,15 +1324,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "158"
+									"value": "55"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+									"value": "W/\"37-nTNDKAPTEpqkgrM0yCK1q6iXObY\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:17:17 GMT"
+									"value": "Tue, 08 Nov 2022 21:47:41 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1221,18 +1344,18 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data berhasil dihapus!\"\n}"
 						}
 					]
 				}
 			],
-			"id": "b661a211-a9a1-4ec2-93c0-00b8d5a05514",
+			"id": "4184a444-861f-4356-b17c-08b8b83d7a6c",
 			"description": "A group of request for creating and modifying levels.",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bb407ec1-c523-49a9-8d56-f6aa43442df9",
+						"id": "b960d404-8310-4bb5-bdc2-da26934fc235",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1242,7 +1365,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "304b1f95-88a2-4220-854f-b244e9ebee0f",
+						"id": "ed371462-9540-4788-8ad5-7fc144b298e9",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1255,20 +1378,162 @@
 			"name": "Request User",
 			"item": [
 				{
+					"name": "User - Generate ID Data",
+					"id": "ad68e5b0-beb9-4319-8f0f-86d32ff74a4d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/generate/code",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"generate",
+								"code"
+							]
+						},
+						"description": "A request for generate code for identifier data."
+					},
+					"response": [
+						{
+							"id": "b0579fd6-bc6d-4a92-bdee-398e74434625",
+							"name": "User - Generate ID Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/generate/code",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"generate",
+										"code"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-TMQ7/PDoaQXtnchhAPwrYsXLbqM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 22:11:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0002\"\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "User - Create Data",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e5868f13-47ac-4092-9e41-3c74ce802600",
+								"id": "51ae42a3-7c2d-4383-9861-0b65c963c717",
 								"exec": [
-									""
+									"const dataUrl = pm.variables.get('baseUrl')+\"/users/generate/code\"",
+									"",
+									"const getTokenRequest = {",
+									"  method: 'GET',",
+									"  url: dataUrl,",
+									"  header: {",
+									"      'content-type': 'application/json',",
+									"      'Authorization': 'Bearer ' + pm.variables.get(\"accessToken\")",
+									"  }",
+									"};",
+									"",
+									"pm.sendRequest(getTokenRequest, (err, response) => {",
+									"    if(response.code == 200) {",
+									"        const responseJson = response.json();",
+									"        if(responseJson.status == \"success\") {",
+									"            const newCode = responseJson.data.code;",
+									"            pm.variables.set(\"code\", newCode);",
+									"        } else {",
+									"            console.log(responseJson.message);",
+									"        }",
+									"    } else {",
+									"        console.log(err);",
+									"    }",
+									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "ba1937f9-d730-4c89-8e66-1edbc68bc0f5",
+					"id": "8e7fb5ba-5e34-439e-a20a-e55493e255e2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1277,7 +1542,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
+							"raw": "{\n    \"code\": \"{{code}}\",\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1297,14 +1562,14 @@
 					},
 					"response": [
 						{
-							"id": "5e12488d-0b57-4b62-b6bb-59009d4566a3",
+							"id": "7b2c5170-8fb4-43e8-bfbc-794a47595a1e",
 							"name": "User - Create Data",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
+									"raw": "{\n    \"code\": \"{{code}}\",\n    \"name\": \"Staff A\",\n    \"level\": \"staff\",\n    \"username\": \"staff_a\",\n    \"password\": \"staff123\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1312,14 +1577,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/users",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/users",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
-										"api",
 										"users"
 									]
 								}
@@ -1378,15 +1640,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "154"
+									"value": "190"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9a-QudRAsgDYQgaaAap93ThC3JbjbI\""
+									"value": "W/\"be-dj9G01FFH7qyKqhPdXrYhxDwpLA\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:17:32 GMT"
+									"value": "Tue, 08 Nov 2022 22:11:58 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1398,7 +1660,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Register berhasil!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data berhasil disimpan!\",\n    \"data\": {\n        \"code\": \"TKO-0002\",\n        \"name\": \"Staff A\",\n        \"level\": \"staff\",\n        \"username\": \"staff_a\",\n        \"createdAt\": \"11/9/2022, 5:11:58 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -1408,7 +1670,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ad29bcdb-9ff6-44fe-abc3-560f797873ed",
+								"id": "c368569d-5061-4c94-a3c5-ab48982ae56c",
 								"exec": [
 									""
 								],
@@ -1416,7 +1678,7 @@
 							}
 						}
 					],
-					"id": "834e5eb5-f5c2-46f7-b9cc-362c40de3888",
+					"id": "048dd12f-edae-4e3e-b86f-d1743823fc47",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1436,20 +1698,17 @@
 					},
 					"response": [
 						{
-							"id": "9b778121-695d-4f91-b557-d6fce62b24f8",
+							"id": "07e183b8-f0d1-4852-b751-b6c41a7ceb3a",
 							"name": "User - Get All Data",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/users",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/users",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
-										"api",
 										"users"
 									]
 								}
@@ -1508,15 +1767,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "403"
+									"value": "317"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"193-71xi9eEsV8ldJT2EZa8GjQyQvHs\""
+									"value": "W/\"13d-CzoolZ7oGQ6F6DNYUYR00+wkCaQ\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:17:42 GMT"
+									"value": "Tue, 08 Nov 2022 22:12:07 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1528,7 +1787,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aaa958177a14e58be5494\",\n            \"name\": \"Administrator\",\n            \"level\": \"admin\",\n            \"username\": \"admin\",\n            \"createdAt\": \"11/9/2022, 2:14:29 AM\",\n            \"updatedAt\": null\n        },\n        {\n            \"_id\": \"636aab4c8177a14e58be54c8\",\n            \"name\": \"Staff A\",\n            \"level\": \"staff\",\n            \"username\": \"staff_a\",\n            \"createdAt\": \"11/9/2022, 2:17:32 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": [\n        {\n            \"code\": \"TKO-0001\",\n            \"name\": \"Administrator\",\n            \"level\": \"admin\",\n            \"username\": \"admin\",\n            \"createdAt\": \"11/9/2022, 5:01:34 AM\",\n            \"updatedAt\": null\n        },\n        {\n            \"code\": \"TKO-0002\",\n            \"name\": \"Staff A\",\n            \"level\": \"staff\",\n            \"username\": \"staff_a\",\n            \"createdAt\": \"11/9/2022, 5:11:58 AM\",\n            \"updatedAt\": null\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1538,7 +1797,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "bac5781c-22d7-4cd4-b62c-50ed2c9af16b",
+								"id": "2942aacb-2029-4dd3-93af-064c64996da3",
 								"exec": [
 									""
 								],
@@ -1546,7 +1805,7 @@
 							}
 						}
 					],
-					"id": "3b0425d7-7080-4938-9728-bdadf490b2b5",
+					"id": "77a2bf76-55f6-4f31-b974-0f5ed7986f65",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1565,7 +1824,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0002"
 								}
 							]
 						},
@@ -1573,24 +1832,24 @@
 					},
 					"response": [
 						{
-							"id": "806b917a-debb-44cf-9e3f-1eb6c1a93300",
+							"id": "366e7736-46b5-422a-87ad-b6c19522df8b",
 							"name": "User - Get Single Data",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/users/:username",
+									"raw": "{{baseUrl}}/users/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
-										":username"
+										":id"
 									],
 									"variable": [
 										{
-											"key": "username",
-											"value": null
+											"key": "id",
+											"value": "TKO-0002"
 										}
 									]
 								}
@@ -1649,15 +1908,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "255"
+									"value": "184"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ff-sAYOX2XpJ3/65+nJDeTsND7bUNA\""
+									"value": "W/\"b8-3KKA1sX0cxPNS0bW/Yh8hoEtxb4\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:18:03 GMT"
+									"value": "Tue, 08 Nov 2022 22:12:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1669,7 +1928,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"_id\": \"636aab4c8177a14e58be54c8\",\n        \"name\": \"Staff A\",\n        \"level\": \"staff\",\n        \"username\": \"staff_a\",\n        \"createdAt\": \"11/9/2022, 2:17:32 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0002\",\n        \"name\": \"Staff A\",\n        \"level\": \"staff\",\n        \"username\": \"staff_a\",\n        \"createdAt\": \"11/9/2022, 5:11:58 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -1679,7 +1938,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3b60138a-e2d3-4509-856a-9fd192ffa994",
+								"id": "ecb565a4-541b-40d9-a4e0-866894c98fdf",
 								"exec": [
 									""
 								],
@@ -1687,7 +1946,7 @@
 							}
 						}
 					],
-					"id": "45324dac-bacf-4583-81cf-93b934aa5f6a",
+					"id": "fce6f617-e0e9-45ca-8171-6eda1934aaa9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1715,7 +1974,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0002"
 								}
 							]
 						},
@@ -1723,7 +1982,7 @@
 					},
 					"response": [
 						{
-							"id": "e8f7f8f0-d579-432e-b0cb-3165c664227c",
+							"id": "9b29a2ac-45d4-47fc-93c5-f1e8a4408d68",
 							"name": "User - Update Data",
 							"originalRequest": {
 								"method": "PUT",
@@ -1738,18 +1997,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/users/:username",
+									"raw": "{{baseUrl}}/users/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
-										":username"
+										":id"
 									],
 									"variable": [
 										{
-											"key": "username",
-											"value": null
+											"key": "id",
+											"value": "TKO-0002"
 										}
 									]
 								}
@@ -1808,15 +2067,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "152"
+									"value": "201"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"98-zz+8hwL8JG6IgPyH3meIUbm2OMM\""
+									"value": "W/\"c9-Ao5MdwKfvq7utrta/EIGaFdQu0U\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:18:20 GMT"
+									"value": "Tue, 08 Nov 2022 22:12:23 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1828,7 +2087,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Update berhasil!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Update berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0002\",\n        \"name\": \"Staff A\",\n        \"level\": \"staff\",\n        \"username\": \"staff1\",\n        \"createdAt\": \"11/9/2022, 5:11:58 AM\",\n        \"updatedAt\": \"11/9/2022, 5:12:23 AM\"\n    }\n}"
 						}
 					]
 				},
@@ -1838,7 +2097,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1c8a5c9b-8d58-4cf2-824c-0a84191d25bc",
+								"id": "481ad8d2-5122-4146-9d70-91db12908327",
 								"exec": [
 									""
 								],
@@ -1846,7 +2105,7 @@
 							}
 						}
 					],
-					"id": "fcea6479-3ca0-44ee-9f1d-219b98815343",
+					"id": "d9cb4322-b963-400d-b961-28a587d82f54",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1865,7 +2124,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0002"
 								}
 							]
 						},
@@ -1873,24 +2132,24 @@
 					},
 					"response": [
 						{
-							"id": "8ff50a2b-924c-4094-9bb9-c02e6353abba",
+							"id": "ded829be-6f53-4de9-9bc9-3c3ce5ac5340",
 							"name": "User - Delete Data",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/users/:username",
+									"raw": "{{baseUrl}}/users/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
-										":username"
+										":id"
 									],
 									"variable": [
 										{
-											"key": "username",
-											"value": null
+											"key": "id",
+											"value": "TKO-0002"
 										}
 									]
 								}
@@ -1949,15 +2208,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "158"
+									"value": "55"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+									"value": "W/\"37-nTNDKAPTEpqkgrM0yCK1q6iXObY\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:18:27 GMT"
+									"value": "Tue, 08 Nov 2022 22:12:30 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1969,18 +2228,18 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Data berhasil dihapus!\"\n}"
 						}
 					]
 				}
 			],
-			"id": "b4b66379-40e5-4b6c-a0b0-ced539f4535a",
+			"id": "a97bf5d0-6fd2-4e9d-9dcb-f9fd4a4923f1",
 			"description": "A group of request for creating and modifying users.",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "08593d7f-ffc5-4f06-bff2-a696abe8672f",
+						"id": "c93b0195-2a55-4f7b-ba1c-c100a60cb578",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1990,7 +2249,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f21c6d6f-93f0-4887-883d-b9f483f9db30",
+						"id": "0d2a5c11-169b-4465-bd0a-40d3fffe4681",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2003,20 +2262,162 @@
 			"name": "Request Information",
 			"item": [
 				{
+					"name": "Info - Generate ID Data",
+					"id": "52622602-1e11-47d3-972a-0958293135be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/apps/generate/code",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"apps",
+								"generate",
+								"code"
+							]
+						},
+						"description": "A request for generate code for identifier data."
+					},
+					"response": [
+						{
+							"id": "c9808695-7181-4b7d-a8ce-128325e1bd70",
+							"name": "Info - Generate ID Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/apps/generate/code",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"apps",
+										"generate",
+										"code"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-TNHuYth8bqGYEEsV0hALvn7DKrc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Nov 2022 22:22:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0001\"\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Info - Create Data",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ca4fd8f1-cc22-4502-afe8-badebc317bc1",
+								"id": "a9e07d1a-9239-403b-badf-5ccac6181983",
 								"exec": [
-									""
+									"const dataUrl = pm.variables.get('baseUrl')+\"/apps/generate/code\"",
+									"",
+									"const getTokenRequest = {",
+									"  method: 'GET',",
+									"  url: dataUrl,",
+									"  header: {",
+									"      'content-type': 'application/json',",
+									"      'Authorization': 'Bearer ' + pm.variables.get(\"accessToken\")",
+									"  }",
+									"};",
+									"",
+									"pm.sendRequest(getTokenRequest, (err, response) => {",
+									"    if(response.code == 200) {",
+									"        const responseJson = response.json();",
+									"        if(responseJson.status == \"success\") {",
+									"            const newCode = responseJson.data.code;",
+									"            pm.variables.set(\"code\", newCode);",
+									"        } else {",
+									"            console.log(responseJson.message);",
+									"        }",
+									"    } else {",
+									"        console.log(err);",
+									"    }",
+									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "d77d4310-3844-4084-ad9f-4333fc092ed3",
+					"id": "bb3665f3-1fca-45d7-a7d1-3bf4680b1d0e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2026,6 +2427,11 @@
 						"body": {
 							"mode": "formdata",
 							"formdata": [
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
 								{
 									"key": "name",
 									"value": "Samples",
@@ -2066,7 +2472,7 @@
 					},
 					"response": [
 						{
-							"id": "688e3af2-5783-44eb-b477-096acfe4c273",
+							"id": "859b4f23-ad68-4f89-b36d-e530ee48aa71",
 							"name": "Info - Create Data",
 							"originalRequest": {
 								"method": "POST",
@@ -2074,6 +2480,11 @@
 								"body": {
 									"mode": "formdata",
 									"formdata": [
+										{
+											"key": "code",
+											"value": "{{code}}",
+											"type": "text"
+										},
 										{
 											"key": "name",
 											"value": "Samples",
@@ -2106,14 +2517,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/apps",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/apps",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
-										"api",
 										"apps"
 									]
 								}
@@ -2172,15 +2580,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "159"
+									"value": "384"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9f-LStE7E48ZInckTbNLwNVtghPZyU\""
+									"value": "W/\"180-SJ4Fp6XfX7ElVrKwV0vOv0hiz5k\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:18:37 GMT"
+									"value": "Tue, 08 Nov 2022 22:22:39 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2192,7 +2600,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil disimpan!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil disimpan!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"name\": \"Samples\",\n        \"long_desc\": \"Some sample stuff for development purpose\",\n        \"short_desc\": \"Sample App Data\",\n        \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"createdAt\": \"11/9/2022, 5:22:39 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -2202,7 +2610,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b24e1e33-070f-4b33-82df-46e207f55404",
+								"id": "5928cc42-5c5e-408d-9365-0fb39a765159",
 								"exec": [
 									""
 								],
@@ -2210,7 +2618,7 @@
 							}
 						}
 					],
-					"id": "865edb4c-87ba-4eef-a1c5-92ef465eba31",
+					"id": "0c707c97-4295-4087-bffb-bdb9b10c0f90",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2230,20 +2638,17 @@
 					},
 					"response": [
 						{
-							"id": "657a41d9-8dcc-49d6-8b87-1d5aa2ee2880",
+							"id": "4eb23d56-7a11-4ae3-bb47-c92912055939",
 							"name": "Info - Get All Data",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/apps",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/apps",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
-										"api",
 										"apps"
 									]
 								}
@@ -2302,15 +2707,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "453"
+									"value": "380"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1c5-vnnVMVYRRdMft91m3arQDD6cVV0\""
+									"value": "W/\"17c-/Qr/FooJlBW5uIs/PXZk7LwMjAw\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:18:49 GMT"
+									"value": "Tue, 08 Nov 2022 22:22:48 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2322,7 +2727,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"636aab8d8177a14e58be54e1\",\n            \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"name\": \"Samples\",\n            \"long_desc\": \"Some sample stuff for development purpose\",\n            \"short_desc\": \"Sample App Data\",\n            \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"createdAt\": \"11/9/2022, 2:18:37 AM\",\n            \"updatedAt\": null\n        }\n    ],\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Request berhasil!\",\n    \"data\": [\n        {\n            \"code\": \"TKO-0001\",\n            \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"name\": \"Samples\",\n            \"long_desc\": \"Some sample stuff for development purpose\",\n            \"short_desc\": \"Sample App Data\",\n            \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n            \"createdAt\": \"11/9/2022, 5:22:39 AM\",\n            \"updatedAt\": null\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -2332,7 +2737,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a2a3b9d4-24de-4e25-93d4-b1315dfe03c5",
+								"id": "a0524807-fa25-4126-a4ca-766b8d14ebc7",
 								"exec": [
 									""
 								],
@@ -2340,7 +2745,7 @@
 							}
 						}
 					],
-					"id": "bac25716-92ea-47e4-aeda-d0a5dc267de8",
+					"id": "d77cf35d-358b-491e-bdfe-a534354b2951",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2359,7 +2764,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -2367,7 +2772,7 @@
 					},
 					"response": [
 						{
-							"id": "e37cb68a-4815-4614-801e-a0aac45d95b3",
+							"id": "456d9876-ff41-471d-a42f-5c28366e6da1",
 							"name": "Info - Get Single Data",
 							"originalRequest": {
 								"method": "GET",
@@ -2384,7 +2789,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -2443,15 +2848,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "451"
+									"value": "378"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1c3-CzQLricpGdyH4a3X4GGcTcMCuNo\""
+									"value": "W/\"17a-lwl+fUUBu7+mRC24qGIspPqCloU\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:19:02 GMT"
+									"value": "Tue, 08 Nov 2022 22:22:59 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2463,7 +2868,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"_id\": \"636aab8d8177a14e58be54e1\",\n        \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"name\": \"Samples\",\n        \"long_desc\": \"Some sample stuff for development purpose\",\n        \"short_desc\": \"Sample App Data\",\n        \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"createdAt\": \"11/9/2022, 2:18:37 AM\",\n        \"updatedAt\": null\n    },\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Request berhasil!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"name\": \"Samples\",\n        \"long_desc\": \"Some sample stuff for development purpose\",\n        \"short_desc\": \"Sample App Data\",\n        \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"createdAt\": \"11/9/2022, 5:22:39 AM\",\n        \"updatedAt\": null\n    }\n}"
 						}
 					]
 				},
@@ -2473,7 +2878,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "78a81468-2e23-4438-b0c9-9bc894ac41d1",
+								"id": "85e7159b-8132-41cb-8203-f5566add4705",
 								"exec": [
 									""
 								],
@@ -2481,7 +2886,7 @@
 							}
 						}
 					],
-					"id": "f9322761-f822-4a34-b894-a7cedff3e6ee",
+					"id": "3f0d67d4-3408-403f-8d05-dc10fda629c0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2530,7 +2935,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -2538,7 +2943,7 @@
 					},
 					"response": [
 						{
-							"id": "4c425ec9-5f07-49fd-ac11-1aac8b3eb6b3",
+							"id": "b2dbaae0-c1f5-4f01-92e5-173920747f6c",
 							"name": "Info - Update Data",
 							"originalRequest": {
 								"method": "PUT",
@@ -2589,7 +2994,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -2648,15 +3053,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "159"
+									"value": "407"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9f-ve/buEQCuIoJXdUuE7oa/y06Hmc\""
+									"value": "W/\"197-cFvFBd7EmJx0h6l+jGqHKikF+tY\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:19:16 GMT"
+									"value": "Tue, 08 Nov 2022 22:23:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2668,7 +3073,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil diupdate!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil diupdate!\",\n    \"data\": {\n        \"code\": \"TKO-0001\",\n        \"logo\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"name\": \"Sample\",\n        \"long_desc\": \"Some edited sample stuff for development purpose\",\n        \"short_desc\": \"Sample Edited\",\n        \"background\": \"/public/uploads/images/cf04bfbfece2d47e3a051bc04cac7e8b.jpeg\",\n        \"createdAt\": \"11/9/2022, 5:22:39 AM\",\n        \"updatedAt\": \"11/9/2022, 5:23:15 AM\"\n    }\n}"
 						}
 					]
 				},
@@ -2678,7 +3083,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ffec1fd8-5c70-446a-80d7-37db368c2fe4",
+								"id": "f81fa005-ae19-4e1c-99da-bd907f14883f",
 								"exec": [
 									""
 								],
@@ -2686,7 +3091,7 @@
 							}
 						}
 					],
-					"id": "6c12cc7c-9dae-4136-aa0e-d2d58d3a586a",
+					"id": "7ad55bc4-01c2-457f-982e-d42c8d1dc11d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2705,7 +3110,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "TKO-0001"
 								}
 							]
 						},
@@ -2713,7 +3118,7 @@
 					},
 					"response": [
 						{
-							"id": "cec1bcf9-2d13-4a88-9e0a-775f8aa565a3",
+							"id": "c045ef0b-71bd-4695-aa4f-dce77f65659b",
 							"name": "Info - Delete Data",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2730,7 +3135,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "TKO-0001"
 										}
 									]
 								}
@@ -2789,15 +3194,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "158"
+									"value": "53"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9e-Yo8G5EyHBuKSMZLPp/4KD8aojJU\""
+									"value": "W/\"35-wBsZgU7LrgcAuNXHIzit4l/oUf8\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 08 Nov 2022 19:19:34 GMT"
+									"value": "Tue, 08 Nov 2022 22:23:24 GMT"
 								},
 								{
 									"key": "Connection",
@@ -2809,18 +3214,18 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\",\n    \"sessions\": {\n        \"nama\": \"Administrator\",\n        \"level\": \"admin\",\n        \"username\": \"admin\",\n        \"iat\": 1667934953,\n        \"exp\": 1667938553\n    }\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"pesan\": \"Data berhasil dihapus!\"\n}"
 						}
 					]
 				}
 			],
-			"id": "b4cab3c8-53b5-41fc-9af1-37071ada7d7a",
+			"id": "7cae9614-995b-457a-955a-9293d2292b10",
 			"description": "A group of request for creating and modifying apps information.",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "63f30ef8-59f8-4abd-ace4-f3baff0ec9af",
+						"id": "08458526-8e63-40c1-ad20-40e10092075e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2830,7 +3235,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "aa6d7632-9e31-4835-a074-b246800e8bd3",
+						"id": "617ede8f-9c71-430a-a2be-19d79f4f49b8",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2854,7 +3259,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "50407147-8364-489a-9ef1-804545f2c11f",
+				"id": "b8d2889a-c684-45ae-ab46-1a6fefe013cf",
 				"type": "text/javascript",
 				"exec": [
 					"const tokenUrl = pm.variables.get('baseUrl')+\"/auth\"",
@@ -2878,7 +3283,9 @@
 					"  const jsonResponse = response.json();",
 					"  if (jsonResponse.status != \"error\") {",
 					"      const newAccessToken = jsonResponse.data.accessToken;",
+					"      const newRefreshToken = jsonResponse.data.refreshToken;",
 					"      pm.variables.set('accessToken', newAccessToken);",
+					"      pm.variables.set('refreshToken', newRefreshToken);",
 					"  } else {",
 					"      console.log(jsonResponse.pesan);",
 					"  }",
@@ -2889,7 +3296,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "85ac01c8-c35e-4563-b643-013bdb1438fe",
+				"id": "1f48b062-20a7-4581-8453-b0afca8b5ccd",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2899,15 +3306,20 @@
 	],
 	"variable": [
 		{
-			"id": "cd4b9136-5950-4592-8275-32678cfd13b2",
+			"id": "17736395-8d06-42c8-a38a-ef4d2c2e4d66",
 			"key": "baseUrl",
-			"value": "http://localhost:3000/api",
+			"value": "http://localhost:3000/v1",
 			"type": "string"
 		},
 		{
-			"id": "9a948d31-61ea-41a6-9bec-c670e847f476",
+			"id": "97209f03-c40d-4f36-a882-d76b339745cd",
 			"key": "accessToken",
 			"value": "DEFAULT_ACCESS_TOKEN"
+		},
+		{
+			"id": "5140d26c-774a-4d20-bcdd-6204fc5e1f24",
+			"key": "code",
+			"value": "GENERATED_CODE"
 		}
 	]
 }
