@@ -18,6 +18,9 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+  schemas:
+    Resources:
+      $ref: '#/components/schemas/Resources'
 security:
   - bearerAuth: []
 tags:
@@ -42,7 +45,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 code: TKO-0000
                 name: Administrator
@@ -131,7 +134,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Register berhasil!
@@ -147,7 +150,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 username: admin
                 password: admin123
@@ -233,7 +236,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Anda berhasil login!
@@ -330,7 +333,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Anda berhasil logout!
@@ -420,7 +423,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -438,7 +441,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 code: '{{code}}'
                 name: Staff
@@ -522,7 +525,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Data berhasil disimpan!
@@ -618,7 +621,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -722,7 +725,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -742,7 +745,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 name: Staff Modified
       parameters:
@@ -832,7 +835,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Data berhasil diupdate!
@@ -935,7 +938,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Data berhasil dihapus!
@@ -1025,7 +1028,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -1043,7 +1046,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 code: '{{code}}'
                 name: Staff A
@@ -1130,7 +1133,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Data berhasil disimpan!
@@ -1228,7 +1231,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -1340,7 +1343,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -1362,7 +1365,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               example:
                 name: Staff A
                 level: staff
@@ -1455,7 +1458,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Update berhasil!
@@ -1560,7 +1563,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Data berhasil dihapus!
@@ -1650,7 +1653,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 message: Request berhasil!
@@ -1668,7 +1671,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               properties:
                 code:
                   type: string
@@ -1765,7 +1768,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Data berhasil disimpan!
@@ -1865,7 +1868,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Request berhasil!
@@ -1975,7 +1978,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Request berhasil!
@@ -1999,7 +2002,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
+              $ref: '#/components/schemas/Resources'
               properties:
                 name:
                   type: string
@@ -2100,7 +2103,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Data berhasil diupdate!
@@ -2207,7 +2210,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Resources'
               example:
                 status: success
                 pesan: Data berhasil dihapus!
