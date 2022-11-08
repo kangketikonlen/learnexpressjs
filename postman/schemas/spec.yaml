@@ -12,12 +12,9 @@ info:
     url: https://github.com/kangketikonlen
     email: pratamapriadi96@gmail.com
 servers:
-  - url: http://{{baseurl}}
+  - url: https://api.learnexpressjs.local
 components:
   securitySchemes:
-    noauthAuth:
-      type: http
-      scheme: noauth
     bearerAuth:
       type: http
       scheme: bearer
