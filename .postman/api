@@ -11,8 +11,8 @@ files[] = {"id":"6505881-14b18b50-3fbd-490c-9fa9-e910e98b76c7","path":"Collectio
 
 [relations.apiDefinition]
 rootDirectory = postman/schemas
-files[] = {"path":"spec.yaml","metaData":{}}
+files[] = {"path":"api-spec.yaml","metaData":{}}
 
 [relations.apiDefinition.metaData]
-rootFiles[] = spec.yaml
+rootFiles[] = api-spec.yaml
 type = openapi:3

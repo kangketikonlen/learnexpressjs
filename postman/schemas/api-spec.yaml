@@ -14,14 +14,14 @@ info:
 servers:
   - url: https://api.learnexpressjs.local
 components:
+  schemas:
+    Object:
+      type: 'object'
+    String:
+      type: 'string'
+    Integer:
+      type: 'integer'
   securitySchemes:
-    schemas:
-      Object:
-        $ref: '#/components/schemas/Object'
-      String:
-        $ref: '#/components/schemas/String'
-      Integer:
-        type: 'integer'
     bearerAuth:
       type: http
       scheme: bearer
