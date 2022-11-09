@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 
 const appSchema = new mongoose.Schema({
+	code: {
+		type: String,
+		required: true
+	},
 	logo: String,
-	name: String,
+	name: {
+		type: String,
+		required: true
+	},
 	long_desc: String,
 	short_desc: String,
 	background: String,
@@ -10,6 +17,7 @@ const appSchema = new mongoose.Schema({
 
 appSchema.methods.toJSON = function () {
 	var obj = this.toObject();
+	delete obj._id;
 	delete obj.__v;
 	obj.createdAt = new Date(obj.createdAt).toLocaleString();
 	if (obj.updatedAt) obj.updatedAt = new Date(obj.updatedAt).toLocaleString();

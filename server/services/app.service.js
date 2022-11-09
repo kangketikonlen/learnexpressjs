@@ -26,7 +26,7 @@ services.one = (name) => {
 
 services.findByID = (id) => {
 	return new Promise((resolve, reject) => {
-		appModel.findById(id).then(results => {
+		appModel.findOne({ code: id }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);
@@ -46,7 +46,7 @@ services.create = (data) => {
 
 services.update = (id, data) => {
 	return new Promise((resolve, reject) => {
-		appModel.findByIdAndUpdate(id, data).then(results => {
+		appModel.findOneAndUpdate({ code: id }, data, { new: true }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);
@@ -56,7 +56,7 @@ services.update = (id, data) => {
 
 services.delete = (id) => {
 	return new Promise((resolve, reject) => {
-		appModel.findByIdAndDelete(id).then(results => {
+		appModel.findOneAndDelete({ code: id }).then(results => {
 			resolve(results);
 		}).catch(err => {
 			reject(err);

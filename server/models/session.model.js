@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
 const sessionSchema = new mongoose.Schema({
-	username: String,
-	accessToken: String,
-	refreshToken: String
+	username: {
+		type: String,
+		required: true
+	},
+	accessToken: {
+		type: String,
+		required: true
+	},
+	refreshToken: {
+		type: String,
+		required: true
+	}
 }, { timestamps: true });
 
 sessionSchema.pre('save', async function (next) {

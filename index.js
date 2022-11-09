@@ -2,7 +2,7 @@
 
 const
 	server = require('./server')(),
-	config = require('./configs');
+	config = require('./config');
 
 server.create(config);
 server.start();

@@ -3,14 +3,31 @@ const mongoose = require('mongoose'),
 	salt = bcrypt.genSaltSync(10);
 
 const UserSchema = new mongoose.Schema({
-	name: String,
-	level: String,
-	username: String,
-	password: String
+	code: {
+		type: String,
+		required: true
+	},
+	name: {
+		type: String,
+		required: true
+	},
+	level: {
+		type: String,
+		required: true
+	},
+	username: {
+		type: String,
+		required: true
+	},
+	password: {
+		type: String,
+		required: true
+	}
 }, { timestamps: true });
 
 UserSchema.methods.toJSON = function () {
 	var obj = this.toObject();
+	delete obj._id;
 	delete obj.password;
 	delete obj.__v;
 	obj.createdAt = new Date(obj.createdAt).toLocaleString();

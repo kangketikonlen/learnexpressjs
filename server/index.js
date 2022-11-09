@@ -8,7 +8,7 @@ const
 	jwt = require('jsonwebtoken'),
 	cors = require('cors'),
 	morgan = require('morgan'),
-	logConfig = require('../configs/log')
+	logConfig = require('../config/logs')
 
 module.exports = function () {
 	let server = express(),
