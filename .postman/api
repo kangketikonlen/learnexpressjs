@@ -5,6 +5,7 @@ id = bd2a1f07-ddbc-4cd4-ac49-b0e9883222f9
 
 [relations.collections]
 rootDirectory = postman/collections
+files[] = {"id":"6505881-14b18b50-3fbd-490c-9fa9-e910e98b76c7","path":"Collection - Learn Express JS.json","metaData":{}}
 
 [relations.collections.metaData]
 
