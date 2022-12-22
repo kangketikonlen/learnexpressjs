@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "googleapis": "^61.0.0",
     "helmet": "^4.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.6.6",
     "morgan": "^1.10.0",
